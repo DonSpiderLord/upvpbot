@@ -46,7 +46,7 @@ member.kick().then((member) => {
     message.channel.send("Access Denied");
 });
 }
-});
+};
 client.on("message", (message) => {
 if (message.content.startsWith("$ban")) {
 
