@@ -19,7 +19,7 @@ client.on('message', (receivedMessage) => {
     }
 })
 
-function processCommand(receivedMessage) {
+function processCommand(receivedMessage, message) {
     let fullCommand = receivedMessage.content.substr(2) // Remove the leading letter "u" and dot "."
     let splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space symbol
     let primaryCommand = splitCommand[0] // The first word directly after the "u." is the command
