@@ -35,7 +35,7 @@ function processCommand(receivedMessage) {
 
       const user = message.mentions.users.first(); // returns the user object if an user mention exists
       const banReason = args.slice(1).join(' '); // Reason of the ban (Everything behind the mention)
-
+​
 // Checks if an user mention exists in this message
 if (!user) {
 try {
@@ -53,19 +53,19 @@ if (!reason) return message.reply('You forgot to enter a reason for this ban!');
 if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user because the bot has not sufficient permissions!'); // Check if the user is bannable with the bot's permissions
 
 await message.guild.ban(user) // Bans the user
-
+​
 const banConfirmationEmbed = new Discord.RichEmbed()
 .setColor('RED')
 .setDescription(`✅ ${user.tag} has been successfully banned!`);
 message.channel.send({
 embed: banConfirmationEmbed
 }); // Sends a confirmation embed that the user has been successfully banned
-
-
+​
+​
 const modlogChannelID = ''; // Discord channel ID where you want to have logged the details about the ban
 if (modlogChannelID.length !== 0) {
 if (!client.channels.get(modlogChannelID )) return undefined; // Check if the modlogChannelID is a real Discord server channel that really exists
-
+​
 const banConfirmationEmbedModlog = new Discord.RichEmbed()
 .setAuthor(`Banned by **${msg.author.username}**`, msg.author.displayAvatarURL)
 .setThumbnail(user.displayAvatarURL)
@@ -79,7 +79,7 @@ embed: banConfirmationEmbedModlog
 }); // Sends the RichEmbed in the modlogchannel
 }
     }
-
+}
 
 // THIS  MUST  BE  THIS  WAY, THIS IS FOR AUTHENTICATION!
 client.login(process.env.BOT_TOKEN);
