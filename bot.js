@@ -51,7 +51,6 @@ return message.reply('Cannot get a Discord user with this userID!');
 if (user === message.author) return message.channel.send('You cannot ban yourself @'+ user); // Check if the user mention or the entered userID is the message author himsmelf
 if (!reason) return message.reply('You forgot to enter a reason for this ban!'); // Check if a reason has been given by the message author
 if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user because the bot has not sufficient permissions!'); // Check if the user is bannable with the bot's permissions
-if (!message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Build Manager", "Developer", "Admin", "Moderator"].includes(r.name))) return message.reply('You do not have the needed permissions to use ban command!');//Checks if the message author has needed permissions to ban​
 
 await message.guild.ban(user) // Bans the user
 
