@@ -20,7 +20,7 @@ if (cmd === `${prefix}hello`){
 
 if (cmd === `${prefix}help`){
   let sEmbed = new Discord.RichEmbed()
-  .setcolor("#5780cd")
+  .setColor("#5780cd")
   .setTitle("Bot Help")
   .addField("This is just a test!!!", true)
   message.channel.send({embed: sEmbed});
