@@ -32,3 +32,4 @@ function processCommand(receivedMessage) {
 if (primaryCommand == 'ping'){
   message.channel.send("Ping, Ping, Pong!");
 }
+}
