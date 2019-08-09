@@ -20,7 +20,7 @@ client.on('message', (receivedMessage) => {
     }
 })
 
-async function processCommand(receivedMessage) {
+function processCommand(receivedMessage) {
     let fullCommand = receivedMessage.content.substr(2) // Remove the leading letter "u" and dot "."
     let splitCommand = fullCommand.split(" ") // Split the message up in to pieces for each space symbol
     let primaryCommand = splitCommand[0] // The first word directly after the "u." is the command
@@ -52,7 +52,7 @@ if (user === message.author) return message.channel.send('You cannot ban yoursel
 if (!reason) return message.reply('You forgot to enter a reason for this ban!'); // Check if a reason has been given by the message author
 if (!message.guild.member(user).bannable) return message.reply('You can\'t ban this user because the bot has not sufficient permissions!'); // Check if the user is bannable with the bot's permissions
 
-await message.guild.ban(user) // Bans the user
+
 
 const banConfirmationEmbed = new Discord.RichEmbed()
 .setColor('RED')
