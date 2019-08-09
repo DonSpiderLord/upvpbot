@@ -1,5 +1,4 @@
 const botconfig = require("./botconfig.json");
-const colours = require("./colours.json");
 const Discord = require("discord.js");
 
 const bot = new Discord.Client({disableEveryone: true});
@@ -21,7 +20,7 @@ if (cmd === `${prefix}hello`){
 
 if (cmd === `${prefix}help`){
   let sEmbed = new Discord.RichEmbed()
-  .setcolor(colours.cyan)
+  .setcolor("#5780cd")
   .setTitle("Bot Help")
   .addField("This is just a test!!!", true)
   message.channel.send({embed: sEmbed});
