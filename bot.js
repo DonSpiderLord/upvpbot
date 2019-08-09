@@ -50,7 +50,7 @@ member.kick().then((member) => {
 client.on("message", (message) => {
 if (message.content.startsWith("$ban")) {
 
-    if (!message.member.roles.find("name", "Admin"))
+    if (!message.member.roles.find("Owner", "Co-Owner", "Manager", "Admin", "Developer", "Moderator", "Build Manager"))
         return;
 
     // Easy way to get member object though mentions.
