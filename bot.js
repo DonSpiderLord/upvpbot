@@ -54,7 +54,7 @@ bot.on("message", async message => {
     if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send("No can do pal!");
     if(bUser.hasPermission("MANAGE_MESSAGES")) return message.channel.send("That person can't be kicked!");
 
-    let banEmbed = new Discord.RichEmbed()
+    const banEmbed = new Discord.RichEmbed()
     .setDescription("~Ban~")
     .setColor("#bc0000")
     .addField("Banned User", `${bUser} with ID ${bUser.id}`)
