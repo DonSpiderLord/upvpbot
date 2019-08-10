@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
       if(bot.commands.has(command)) {
         command = bot.commands.get(command);
         var SHembed = new Discord.RichEmbed()
-        .setColor()
+        .setColor("#e6aa07")
         .setAuthor(`U-PvP Discord Admin Help`, message.guild.iconURL)
         .setDescription(`The bot prefix is: ${prefix}\n\n**Command:** ${command.config.name}\n**Description:** ${command.config.description || "No Description"}\n**Usage:** ${command.config.usage || "No Usage"}\n**Accessable by:** ${command.config.accessableby || "Members"}\n**Aliases:** ${command.config.noalias || command.config.aliases}`)
       }
@@ -19,11 +19,11 @@ module.exports.run = async (bot, message, args) => {
       message.delete()
       let embed = new Discord.RichEmbed()
       .setAuthor(`U-PvP Discord Admin Help`, message.guild.iconURL)
-      .setColor()
+      .setColor("#e6aa07")
       .setDescription(`${message.author.username} check your dm's!`)
 
       let Sembed = new Discord.RichEmbed()
-      .setColor()
+      .setColor("#e6aa07")
       .setAuthor(`U-PvP Discord Admin Help`, message.guild.iconURL)
       .setThumbnail(bot.user.displayAvatarURL)
       .setTimestamp()
