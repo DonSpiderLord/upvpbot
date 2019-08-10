@@ -12,8 +12,10 @@ module.exports.run = async (bot, message, args) => {
         var SHembed = new Discord.RichEmbed()
         .setColor("#e6aa07")
         .setAuthor(`U-PvP Discord Admin Help`, message.guild.iconURL)
+        .setThumbnail(bot.user.displayAvatarURL)
         .setDescription(`The bot prefix is: ${prefix}\n\n**Command:** ${command.config.name}\n**Description:** ${command.config.description || "No Description"}\n**Usage:** ${command.config.usage || "No Usage"}\n**Accessable by:** ${command.config.accessableby || "Members"}\n**Aliases:** ${command.config.noalias || command.config.aliases}`)
-      }
+        message.channel.send(SHembed);
+        }
     }
     if (!args[0]) {
       message.delete()
