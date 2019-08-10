@@ -3,17 +3,13 @@ const Discord = require("discord.js");
 const prefix = botconfig.prefix
 
 module.exports.run = async (bot, message, args) => {
-      let command = args[0];
-      if(bot.commands.has(command)) {
-        command = bot.commands.get(command);
-        var SHembed = new Discord.RichEmbed()
+        let sEmbed = new Discord.RichEmbed()
         .setColor("#e6aa07")
-        .setAuthor(`U-PvP Discord Admin Help`, message.guild.iconURL)
+        .setTitle("Help Menu")
         .setThumbnail(bot.user.displayAvatarURL)
-        .setDescription(`The bot prefix is: ${prefix}\n\nAvailable Commands:\n_help_ - This menu!`)
+        .setAuthor(bot.user.username)
+        .setDescription(`The bot prefix is: ${prefix}\n\nAvailable Commands:\n_help_ - This menu!`);
         message.channel.send(SHembed);
-    }
-
     }
 
 module.exports.config = {
