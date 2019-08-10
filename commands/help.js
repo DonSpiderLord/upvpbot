@@ -3,10 +3,10 @@ const Discord = require("discord.js");
 const prefix = botconfig.prefix
 
 module.exports.run = async (bot, message, args) => {
-    if (args[0] == "help") return message.channel.send(`Just do ${prefix}help instead.`)
+    if (args[1] == "help") return message.channel.send(`Just do ${prefix}help instead.`)
 
-    if (args[0]) {
-      let command = args[0];
+    if (args[1]) {
+      let command = args[1];
       if(bot.commands.has(command)) {
         command = bot.commands.get(command);
         var SHembed = new Discord.RichEmbed()
@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send(SHembed);
         }
     }
-    if (!args[0]) {
+    if (!args[1]) {
       message.delete()
       let embed = new Discord.RichEmbed()
       .setAuthor(`U-PvP Discord Admin Help`, message.guild.iconURL)
