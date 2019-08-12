@@ -24,7 +24,6 @@ module.exports.run = async (bot, message, args) => {
 
       bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Membed});
 
-    }
   } else {
 
         return message.channel.send("You don't have permission to use this command!");
