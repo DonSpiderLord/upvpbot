@@ -36,8 +36,8 @@ module.exports.run = async (bot, message, args) => {
       message.channel.send(`${mutee.user.username} was successfully muted.`)
     })
 
-    let embed = new Discord.RichEmbed()
-    .setColor("#0890d4")
+    let Membed = new Discord.RichEmbed()
+    .setColor("")
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .addField("Moderation:", "Mute")
     .addField("Muted Person:", mutee.user.username)
@@ -46,7 +46,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Date:", message.createdAt.toLocaleString())
 
     let sChannel = message.guild.channels.find(c => c.name === "mod-logs")
-    sChannel.send(embed)
+    message.channel.send({embed: Membed});
 
 } else {
 
