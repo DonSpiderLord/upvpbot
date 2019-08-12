@@ -2,23 +2,19 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ) {
-      let bannedMember = await bot.fetchUser(args[0])
-        if(!bannedMember) return message.channel.send("Please provide a user to unban!")
-      let reason = "Unban In U-PvP Network Discord"
-      message.delete()
-      try {
-        message.guild.unban(bannedMember, {reason: reason})
-        message.channel.send(`${bannedMember.tag} has been successfully unbanned.`)
-      } catch(e){
-        console.log(e.message)
-      }
-
+      message.guild.fetchBans().then(bans => {
+            bans.forEach(user => {
+                console.log(user.username + '#' + user.tag);
+                user.send('MESSAGE / INVITE LINK');
+                message.guild.unban(user);
+            });
+        });
       let Membed = new Discord.RichEmbed()
       .setColor("#0890d4")
       .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
       .setThumbnail(bot.user.displayAvatarURL)
       .addField("Moderation:", "Unban")
-      .addField("Unbanned Person:", `${bannedMember.username} (${bannedMember.id})`)
+      .addField("Unbanned Person:", `${user.username} (${user.id})`)
       .addField("Moderator:", message.author.username)
       .addField("Date:", message.createdAt.toLocaleString())
 
