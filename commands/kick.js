@@ -8,11 +8,11 @@ module.exports.run = async (bot, message, args) => {
       const member = message.guild.member(kickee)
       if (kickee){
         message.delete()
-        banee.send(`Hello, you have been kicked from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`).then(() =>
+        kickee.send(`Hello, you have been kicked from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`).then(() =>
         member.kick({reason: 'They were bad!',}))
         message.channel.send(`${kickee.user.username} was successfully kicked.`)
 
-        let Bembed = new Discord.RichEmbed()
+        let Kembed = new Discord.RichEmbed()
         .setColor("#0890d4")
         .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
         .setThumbnail(bot.user.displayAvatarURL)
@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Moderator:", message.author.username)
         .addField("Date:", message.createdAt.toLocaleString())
 
-        bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Bembed});
+        bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Kembed});
       }
     } else {
 
