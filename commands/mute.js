@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
 
-    let sChannel = message.guild.channels.find(c => c.name === "mod-logs").then message.channel.send({embed: Membed});
+    message.guild.channels.get("mod-logs").send({embed: Membed});
 
 } else {
 
