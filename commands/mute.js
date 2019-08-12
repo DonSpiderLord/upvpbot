@@ -6,9 +6,6 @@ module.exports.run = async (bot, message, args) => {
     let mutee = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!mutee) return message.channel.send("Please supply a user to mute!");
 
-    let reason = args.slice(1).join(" ");
-    if(!reason) return message.channel.send("Please supply a reason to mute!");
-
     let muterole = message.guild.roles.find(r => r.name === "Muted")
     if(!muterole) {
       try{
@@ -32,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
     }
     mutee.addRole(muterole.id).then(() => {
       message.delete()
-      mutee.send(`Hello, you have been muted in ${message.guild.name} for: ${reason}. This is automated message. Don't respond to it.`)
+      mutee.send(`Hello, you have been muted in ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`)
       message.channel.send(`${mutee.user.username} was successfully muted.`)
     })
 
@@ -43,7 +40,6 @@ module.exports.run = async (bot, message, args) => {
     .addField("Moderation:", "Mute")
     .addField("Muted Person:", mutee.user.username)
     .addField("Moderator:", message.author.username)
-    .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
 
     bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Membed});
@@ -59,7 +55,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
   name: "mute",
   aliases: ["nospeak"],
-  usage: "u.mute <@user> <reason>",
+  usage: "u.mute <@user>",
   description: "Mutes Specified User.",
   //noalias: "No Aliases",
   accessableby: "Owner"
