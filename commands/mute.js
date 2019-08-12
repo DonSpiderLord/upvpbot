@@ -45,7 +45,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Reason:", reason)
     .addField("Date:", message.createdAt.toLocaleString())
 
-    message.guild.channels.get("mod-logs").send({embed: Membed});
+    message.guild.channels.get(608577419527454730).send({embed: Membed});
 
 } else {
 
