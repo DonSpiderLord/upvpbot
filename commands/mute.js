@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     if(!mutee) return message.channel.send("Please supply a user to mute!");
 
     let reason = args.slice(1).join(" ");
-    if(!reason) reason = "Please supply a reason to mute!"
+    if(!reason) return message.channel.send("Please supply a reason to mute!");
 
     let muterole = message.guild.roles.find(r => r.name === "Muted")
     if(!muterole) {
@@ -32,12 +32,12 @@ module.exports.run = async (bot, message, args) => {
     }
     mutee.addRole(muterole.id).then(() => {
       message.delete()
-      mutee.send(`Hello, you have been muted in ${message.guild.name} for: ${reason}`)
+      mutee.send(`Hello, you have been muted in ${message.guild.name} for: ${reason}. This is automated message. Don't respond to it.`)
       message.channel.send(`${mutee.user.username} was successfully muted.`)
     })
 
     let embed = new Discord.RichEmbed()
-    .setColor("")
+    .setColor("#0890d4")
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .addField("Moderation:", "Mute")
     .addField("Muted Person:", mutee.user.username)
