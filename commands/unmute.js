@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
       })
 
       let UMembed = new Discord.RichEmbed()
-      .setColor("")
+      .setColor("#0890d4")
       .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
       .setThumbnail(bot.user.displayAvatarURL)
       .addField("Moderation:", "Unmute")
