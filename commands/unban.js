@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
 module.exports.config = {
   name: "unban",
   aliases: ["forgive"],
-  usage: "u.unban <@user>",
+  usage: "u.unban <id>",
   description: "Unbans Specified User.",
   //noalias: "No Aliases",
   accessableby: "Owner"
