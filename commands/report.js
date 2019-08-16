@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
       let rUser = args.slice(1).join(' ');
       let author = message.author.username;
-
+      let reason = args.slice(2).join(' ');
 
         message.delete()
         message.channel.send(`${rUser} was successfully reported for test.`)
@@ -18,6 +18,7 @@ module.exports.run = async (bot, message, args) => {
         .setThumbnail(bot.user.displayAvatarURL)
         .addField("Type:", "Report")
         .addField("Reported Person:", rUser)
+        .addField("Reason", reason)
         .addField("Reporter:", author)
         .addField("Date:", message.createdAt.toLocaleString())
 
