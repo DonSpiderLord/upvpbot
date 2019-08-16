@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const Bot = require("../bot.js");
+const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
