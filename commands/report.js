@@ -5,7 +5,7 @@ const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
-      let rUser = args.slice(prefix.length).join('')
+      let rUser = args.slice(prefix.length).join(' ')
       let author = message.author.username;
 
 
