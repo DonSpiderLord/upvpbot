@@ -2,10 +2,10 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
-      let rUser = message.get(args[0]);
+      let rUser = args.slice(1).join(" ");
       let author = message.author.username;
-      let reason = message.get(args[1]);
-      let server = message.get(args[2]);
+      let reason = args.slice(2).join(" ");
+      let server = args.slice(3).join(" ");
       
         message.delete()
         message.channel.send(`${rUser} was successfully reported for ${reason}.`)
