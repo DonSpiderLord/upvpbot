@@ -5,12 +5,12 @@ const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
-      let rUser = args.slice(prefix.length).split(/ +/);
+      let rUser = args.slice(prefix.length).join('')
       let author = message.author.username;
 
 
         message.delete()
-        message.channel.send(`${rUser} was successfully reported for ${reason}.`)
+        message.channel.send(`${rUser} was successfully reported for test.`)
 
         let Rembed = new Discord.RichEmbed()
         .setColor("#0890d4")
@@ -18,7 +18,6 @@ module.exports.run = async (bot, message, args) => {
         .setThumbnail(bot.user.displayAvatarURL)
         .addField("Type:", "Report")
         .addField("Reported Person:", rUser)
-        .addField("Server:", server)
         .addField("Reporter:", author)
         .addField("Date:", message.createdAt.toLocaleString())
 
