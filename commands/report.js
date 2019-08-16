@@ -5,10 +5,10 @@ const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
-      let rUser = args.slice(0).join(' ');
+      let rUser = args.slice(0);
       let author = message.author.username;
-      let reason = args.slice(1).join(' ');
-      let server = args.slice(2).join(' ');
+      let reason = args.slice(1);
+      let server = args.slice(2);
 
         message.delete()
         message.channel.send(`${rUser} was successfully reported for test.`)
