@@ -29,13 +29,13 @@ fs.readdir("./commands", (err, files) => {
   });
 });
 
-const args = message.content.slice(prefix.length).split(' ');
-const cmd = args.shift().toLowerCase();
-
 bot.on("message", async message =>{
   if (message.author.bot || message.channel.type === "dm") return;
 
-let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
+const args = message.content.slice(prefix.length).split(' ');
+const cmd = args.shift().toLowerCase();
+  
+let commandfile = bot.commands.get(cmd.slice(0)) || bot.commands.get(bot.aliases.get(cmd.slice(0)))
 if (commandfile) commandfile.run(bot,message,args)
 
 
