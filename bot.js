@@ -1,6 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
-let prefix = botconfig.prefix;
+const prefix = botconfig.prefix;
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
@@ -32,18 +32,18 @@ fs.readdir("./commands", (err, files) => {
 bot.on("message", async message =>{
   if (message.author.bot || message.channel.type === "dm") return;
 
-const args = message.content.slice(prefix.length).split(' ');
-const cmd = args.shift().toLowerCase();
-  
+  if (message === "u.suggest"){
+      let args = message.content.slice(prefix.length)
+      let commandfile = bot.commands.get(cmd.slice(0)) || bot.commands.get(bot.aliases.get(cmd.slice(0)))
+      if (commandfile) commandfile.run(bot,message,args)
+  }else
+
+  let args = message.content.slice(prefix.length).split(' ');
+  let cmd = args.shift().toLowerCase();
+
 let commandfile = bot.commands.get(cmd.slice(0)) || bot.commands.get(bot.aliases.get(cmd.slice(0)))
 if (commandfile) commandfile.run(bot,message,args)
 
-
-
-
-if (cmd === `${prefix}hello`){
-  return message.channel.send("Hello!")
-}
 })
 
 bot.login(process.env.BOT_TOKEN);
