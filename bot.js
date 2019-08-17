@@ -32,7 +32,7 @@ fs.readdir("./commands", (err, files) => {
 bot.on("message", async message =>{
   if (message.author.bot || message.channel.type === "dm") return;
 
-  if (message.includes("u.suggest") === true){
+  if (message.includes('u.suggest') === true){
       let args = message.content.slice(prefix.length).join(' ');
       let cmd = args.shift().toLowerCase();
       let commandfile = bot.commands.get(cmd.slice(0)) || bot.commands.get(bot.aliases.get(cmd.slice(0)));
