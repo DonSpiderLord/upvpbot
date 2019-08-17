@@ -5,7 +5,7 @@ const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
-      let suggestion = args[0-50];
+      let suggestion = args;
       let author = message.author.username;
 
         message.delete()
@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
         .setAuthor(`${message.guild.name} Suggestions`, message.guild.iconURL)
         .setThumbnail(bot.user.displayAvatarURL)
         .addField("Type:", "Suggestion")
-        .addField("Reported Person:", suggestion)
+        .addField("Suggestion:", suggestion)
         .addField("Reporter:", author)
         .addField("Date:", message.createdAt.toLocaleString())
 
