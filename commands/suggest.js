@@ -1,0 +1,42 @@
+const Discord = require("discord.js");
+const Bot = require("../bot.js");
+const botconfig = require("../botconfig.json");
+const prefix = botconfig.prefix;
+
+module.exports.run = async (bot, message, args) => {
+    if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
+      let suggestion = args[0].join(' ');
+      let author = message.author.username;
+
+        message.delete()
+        message.channel.send(`Your suggestion has been recorded!`)
+
+        let Rembed = new Discord.RichEmbed()
+        .setColor("#13edc5")
+        .setAuthor(`${message.guild.name} Reports`, message.guild.iconURL)
+        .setThumbnail(bot.user.displayAvatarURL)
+        .addField("Type:", "Report")
+        .addField("Reported Person:", rUser)
+        .addField("Reason:", reason)
+        .addField("Server:", server)
+        .addField("Reporter:", author)
+        .addField("Date:", message.createdAt.toLocaleString())
+
+        bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Rembed});
+        Rembed.react('👍')
+        Rembed.react('👎')
+    } else if(message.member.roles.some(r=>["SuggestionBan"].includes(r.name)) ){
+
+      return message.channel.send("You have been banned from using this command!");
+
+    }
+}
+
+module.exports.config = {
+  name: "suggest",
+  aliases: ["idea"],
+  usage: "u.suggest <suggestion>",
+  description: "Sends suggestion to suggestion channel.",
+  //noalias: "No Aliases",
+  accessableby: "Owner"
+}
