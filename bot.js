@@ -38,7 +38,7 @@ bot.on("message", async message =>{
       if (commandfile) commandfile.run(bot,message,args)
   }else
 
-  const = message.content.slice(prefix.length).split(' ');
+  const args = message.content.slice(prefix.length).split(' ');
   let cmd = args.shift().toLowerCase();
 
 let commandfile = bot.commands.get(cmd.slice(0)) || bot.commands.get(bot.aliases.get(cmd.slice(0)))
