@@ -22,8 +22,8 @@ module.exports.run = async (bot, message, args) => {
         .addField("Date:", message.createdAt.toLocaleString())
 
         bot.guilds.get('607885235719372801').channels.get('608645820287418394').send({embed: Rembed});
-        embed: Rembed.react('👍')
-        embed: Rembed.react('👎')
+        await Rembed.react('👍')
+        await Rembed.react('👎')
     } else if(message.member.roles.some(r=>["SuggestionBan"].includes(r.name)) ){
 
       return message.channel.send("You have been banned from using this command!");
