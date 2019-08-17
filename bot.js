@@ -33,7 +33,7 @@ bot.on("message", async message =>{
   if (message.author.bot || message.channel.type === "dm") return;
 
   if (message === "u.suggest"){
-      let args = message.content.slice(prefix.length)
+      let args = message.content.slice(prefix.length).join(' ')
       let commandfile = bot.commands.get(cmd.slice(0)) || bot.commands.get(bot.aliases.get(cmd.slice(0)))
       if (commandfile) commandfile.run(bot,message,args)
   }else{
