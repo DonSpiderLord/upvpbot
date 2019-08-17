@@ -5,7 +5,7 @@ const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
-      let suggestion = args[0].join(' ');
+      let suggestion = args[0];
       let author = message.author.username;
 
         message.delete()
