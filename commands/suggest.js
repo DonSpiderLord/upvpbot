@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
 
         message.delete()
         message.channel.send(`Your suggestion has been recorded!`)
-        message.channel.send(args)
+        message.channel.send(suggestion)
 
         let Rembed = new Discord.RichEmbed()
         .setColor("#13edc5")
