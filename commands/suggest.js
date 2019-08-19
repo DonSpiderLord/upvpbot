@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
         .setAuthor(`${message.guild.name} Suggestions`, message.guild.iconURL)
         .setThumbnail(bot.user.displayAvatarURL)
         .addField("Suggestion:", suggestion)
-        .addField("Reporter:", author)
+        .addField("Suggested By:", author)
         
         bot.guilds.get('607885235719372801').channels.get('608645820287418394').send({embed: Sembed}).then(embedMessage => {
         embedMessage.react("👍");
