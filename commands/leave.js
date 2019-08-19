@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const opus = require("node-opus");
+const opus = require("opusscript");
 const ffmpeg = require("ffmpeg");
 
 module.exports.run = async (bot, message, args) => {
