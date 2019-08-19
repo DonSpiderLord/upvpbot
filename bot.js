@@ -1,6 +1,8 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
+const badwords = require(".badwords.json");
+var profanities = badwords.profanities;
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
@@ -31,7 +33,14 @@ fs.readdir("./commands", (err, files) => {
 
 bot.on("message", async message =>{
   if (message.author.bot || message.channel.type === "dm") return;
-
+  for (x = 0; x < profanities.length; x++) {
+        if(message.member.roles.has(Admin.id) || message.channel.id === General.id) return; // if you changed the name of the variables above, change these too.
+        if (msg.includes(profanities[x])){
+            await message.reply("You cannot say that here!")     
+            message.delete()
+            return;     
+  }
+}
   let args = message.content.slice(prefix.length).split(' ');
   let cmd = args.shift().toLowerCase();
 
