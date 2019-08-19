@@ -34,7 +34,6 @@ fs.readdir("./commands", (err, files) => {
 bot.on("message", async message =>{
   if (message.author.bot || message.channel.type === "dm") return;
   for (x = 0; x < profanities.length; x++) {
-        if(message.member.roles.has(Admin.id) || message.channel.id === General.id) return; // if you changed the name of the variables above, change these too.
         if (msg.includes(profanities[x])){
             await message.reply("You cannot say that here!")     
             message.delete()
