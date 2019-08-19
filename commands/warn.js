@@ -9,13 +9,13 @@ module.exports.run = async (bot, message, args) => {
     if(!reason) return message.channel.send("Please supply a reason to warn for!");
 
     let warnEmbed = new Discord.RichEmbed()
-        .setColor("#0890d4")
+        .setColor("#bf1711")
         .setTitle(`${warnee.user.username} Has Been Warned For ${reason}!`);
     message.channel.send({embed: warnEmbed});
     message.delete();
 
     let Wembed = new Discord.RichEmbed()
-    .setColor("#0890d4")
+    .setColor("#bf1711")
     .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
     .setThumbnail(bot.user.displayAvatarURL)
     .addField("Moderation:", "Warn")
