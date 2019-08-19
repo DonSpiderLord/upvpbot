@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
     if(!reason) return message.channel.send("Please supply a reason to warn for!");
 
     let warnSuccessfulEmbed = new Discord.RichEmbed()
-        .setColor(#0890d4)
+        .setColor("#0890d4")
         .setTitle(`${warnee} Has Been Warned! Reason: ${reason}.`);
     message.channel.send(warnSuccessfulEmbed);
     message.delete();
