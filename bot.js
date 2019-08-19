@@ -38,7 +38,7 @@ bot.on("message", async message =>{
             await message.reply("Don't say that here! :angry:")     
           
             let ChatFilterEmbed = new Discord.RichEmbed()
-            .setColor(embedColor)
+            .setColor("#bf1711")
             .setTitle(`${message.author} Has Been Warned For Language!`);
       message.channel.send(ChatFilterEmbed);  
           message.delete();
