@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
     let warnEmbed = new Discord.RichEmbed()
         .setColor("#0890d4")
         .setTitle(`${warnee} Has Been Warned For ${reason}!`);
-    message.channel.send(embed: warnEmbed)
+    message.channel.send({embed: warnEmbed});
     message.delete();
 
     let Wembed = new Discord.RichEmbed()
