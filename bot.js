@@ -41,14 +41,14 @@ bot.on("message", async message =>{
             .setColor("#bf1711")
             .setTitle(`${message.author.username} Has Been Warned For Language!`);
             message.channel.send({embed: ChatFilterEmbed});  
-            message.delete();
+            //message.delete();
           
             let ChatFilterModEmbed = new Discord.RichEmbed()
             .setColor("#bf1711")
             .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
             .setThumbnail(bot.user.displayAvatarURL)
             .addField("Moderation:", "Warn")
-            .addField("Warner Person:", message.author.username)
+            .addField("Warned Person:", message.author.username)
             .addField("Reason:", "Language")
             .addField("Moderator:", bot.user.username)
             .addField("Date:", message.createdAt.toLocaleString())
