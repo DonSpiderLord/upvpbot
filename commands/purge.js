@@ -9,13 +9,12 @@ module.exports.run = async (bot, message, args) => {
         }).then((messages) => {
         message.channel.bulkDelete(amount).catch(error => console.log(error.stack));
  });
+
+ } else {
+
+    return message.channel.send("You don't have permission to use this command!");
+
 }
-    }
-    else {
-        
-        return message.channel.send("You don't have permission to use this command!");
-   
-} 
 
 module.exports.config = {
   name: "purge",
