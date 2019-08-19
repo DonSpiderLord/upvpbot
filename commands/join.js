@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const opus = require("node-opus");
 
 module.exports.run = async (bot, message, args) => {
         if(message.member.voiceChannel){
