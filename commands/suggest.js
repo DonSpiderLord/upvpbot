@@ -17,7 +17,6 @@ module.exports.run = async (bot, message, args) => {
         .setColor("#13edc5")
         .setAuthor(`${message.guild.name} Suggestions`, message.guild.iconURL)
         .setThumbnail(bot.user.displayAvatarURL)
-        .addField("Type:", "Suggestion")
         .addField("Suggestion:", suggestion)
         .addField("Reporter:", author)
         
