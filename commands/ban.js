@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
       if (member){
         message.delete()
         banee.send(`Hello, you have been banned from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`).then(() => 
-        member.ban({reason: 'They were bad!',}))
+        banee.ban({reason: 'They were bad!',}))
         message.channel.send(`${banee.user.username} was successfully banned.`)
 
         let Bembed = new Discord.RichEmbed()
