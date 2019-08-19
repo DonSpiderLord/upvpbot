@@ -36,7 +36,12 @@ bot.on("message", async message =>{
   for (x = 0; x < profanities.length; x++) {
         if (message.content.includes(profanities[x])){
             await message.reply("Don't say that here! :angry:")     
-            message.delete()
+          
+            let ChatFilterEmbed = new Discord.RichEmbed()
+            .setColor(embedColor)
+            .setTitle(`${message.author} Has Been Warned For Language!`);
+      message.channel.send(ChatFilterEmbed);  
+          message.delete();
             return;     
   }
 }
