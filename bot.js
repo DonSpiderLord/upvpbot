@@ -35,7 +35,7 @@ bot.on("message", async message =>{
   if (message.author.bot || message.channel.type === "dm") return;
   for (x = 0; x < profanities.length; x++) {
         if (message.content.includes(profanities[x])){
-            await message.reply("You cannot say that here!")     
+            await message.reply("Don't say that here! :angry:")     
             message.delete()
             return;     
   }
