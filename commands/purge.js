@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    const amount = args[1];
+    const amount = args[0];
     if (!amount) return message.reply('You must specify an amount to delete!');
 
     message.channel.fetchMessages({
