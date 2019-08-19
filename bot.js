@@ -37,10 +37,9 @@ bot.on("message", async message =>{
         if (message.content.includes(profanities[x])){
             await message.reply("Don't say that here! :angry:")     
           
-            let warnedpers = message.author.user.username;
             let ChatFilterEmbed = new Discord.RichEmbed()
             .setColor("#bf1711")
-            .setTitle(`${warnedpers} Has Been Warned For Language!`);
+            .setTitle(`${message.author.user.username} Has Been Warned For Language!`);
             message.channel.send({embed: ChatFilterEmbed});  
             message.delete();
           
@@ -49,7 +48,7 @@ bot.on("message", async message =>{
             .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
             .setThumbnail(bot.user.displayAvatarURL)
             .addField("Moderation:", "Warn")
-            .addField("Warner Person:", warnedpers)
+            .addField("Warner Person:", message.author.user.username)
             .addField("Reason:", "Language")
             .addField("Moderator:", bot.user.username)
             .addField("Date:", message.createdAt.toLocaleString())
