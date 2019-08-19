@@ -40,8 +40,8 @@ bot.on("message", async message =>{
             let ChatFilterEmbed = new Discord.RichEmbed()
             .setColor("#bf1711")
             .setTitle(`${message.author} Has Been Warned For Language!`);
-      message.channel.send(ChatFilterEmbed);  
-          message.delete();
+            message.channel.send({embed: ChatFilterEmbed});  
+            message.delete();
             return;     
   }
 }
