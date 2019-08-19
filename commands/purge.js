@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     message.channel.fetchMessages({
      limit: 100,
    }).then((messages) => {
-      message.channel.bulkDelete(messages).catch(error => console.log(error.stack));
+      message.channel.bulkDelete(amount).catch(error => console.log(error.stack));
  });
 }
 
