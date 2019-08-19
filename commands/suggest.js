@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
       let author = message.author.username;
       for(i=0;i<=args.length;i++){
-      suggestion = args[i]+ " "
+      suggestion = args.join(' ')
       }
 
         message.delete()
