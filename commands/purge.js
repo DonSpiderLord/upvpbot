@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     return message.channel.send("You don't have permission to use this command!");
 
 }
-
+}
 module.exports.config = {
   name: "purge",
   aliases: ["bulkdelete"],
