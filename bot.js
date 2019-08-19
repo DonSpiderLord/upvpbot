@@ -53,7 +53,7 @@ bot.on("message", async message =>{
             .addField("Moderator:", bot.user.username)
             .addField("Date:", message.createdAt.toLocaleString())
 
-            bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: ChatFilerModEmbed});
+            bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: ChatFilterModEmbed});
             
             return;     
   }
