@@ -5,12 +5,13 @@ const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
-      let suggestion = args;
       let author = message.author.username;
+      for(i=0;i<=args.length;i++){
+      suggestion = args[i]+ " "
+      }
 
         message.delete()
-        message.channel.send(`Your suggestion has been recorded!`)
-        message.channel.send(args.length)
+        message.channel.send(`Your suggestion has been recorded! Vote in #suggestions!`)
 
         let Rembed = new Discord.RichEmbed()
         .setColor("#13edc5")
