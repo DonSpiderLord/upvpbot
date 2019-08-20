@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
           if(message.guild.voiceConnection){
-            message.member.voiceConnection.disconnect();
+            message.guild.voiceConnection.disconnect();
           } else {
                 message.reply("I must be in voice channel to leave it!");
           }
