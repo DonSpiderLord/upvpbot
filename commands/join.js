@@ -21,5 +21,4 @@ module.exports.config = {
   description: "Join voice channel!",
   //noalias: "No Aliases",
   accessableby: "Anyone"
-
 }
