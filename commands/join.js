@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const YTDL = require("ytdl-core-discord);
+const YTDL = require("ytdl-core);
 
 function Play(connection, message){
   var server = servers[message.guild.id];
