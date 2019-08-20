@@ -1,14 +1,11 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-        if(message.member.voiceChannel){
-          if(!message.guild.voiceConnection){
-            message.member.voiceChannel.disconnect()
-                .then(connection => {
-                    message.reply("Succesfully Left Voice Channel");
-                })
+          if(message.guild.voiceConnection){
+            message.member.voiceConnection.disconnect()
+          } else {
+                message.reply("I must be in voice channel to leave it!")
           }
-        }
 }
 
 module.exports.config = {
