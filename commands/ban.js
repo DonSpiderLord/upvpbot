@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const main = require("../bot.js");
 
 module.exports = {
 	name: 'ban',
