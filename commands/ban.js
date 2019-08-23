@@ -1,5 +1,4 @@
 const Discord = require("discord.js");
-const bot = new Discord.Client;
 module.exports = {
 	name: 'ban',
 	description: 'Bans User',
@@ -18,7 +17,7 @@ module.exports = {
         let Bembed = new Discord.RichEmbed()
         .setColor("#0890d4")
         .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
-        .setThumbnail(bot.user.displayAvatarURL)
+        .setThumbnail(client.user.displayAvatarURL)
         .addField("Moderation:", "Ban")
         .addField("Banned Person:", banee.user.username)
         .addField("Moderator:", message.author.username)
