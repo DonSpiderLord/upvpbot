@@ -58,6 +58,6 @@ bot.on("message", async message =>{
            return;
  }
 }
-}
+})
 
 bot.login(process.env.BOT_TOKEN);
