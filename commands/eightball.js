@@ -34,10 +34,10 @@ const Discord = require("discord.js")
  }
 
     module.exports.help = {
-        name: "8ball",
+        name: "eightball",
         aliases: ["balloftruth"],
-        usage: "u.8ball",
-        description: "8 Ball Of Truth.",
+        usage: "u.eightball",
+        description: "8-Ball Of Truth.",
         //noalias: "No Aliases",
         accessableby: "Anyone"
     }
