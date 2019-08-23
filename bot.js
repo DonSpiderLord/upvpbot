@@ -1,6 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
-const prefix = require('./botconfig.json');
+const botconfig = require("./botconfig.json");
+const prefix = botconfig.prefix;
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
