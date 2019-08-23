@@ -1,8 +1,6 @@
 const Discord = require("discord.js")
 
  module.exports.run = async (bot, message, args) => {
-
-    if(!args[0]) return message.reply("Plesae enter a full question with 2 or more words!");
     const replies = [
       "Yes",
       "No",
@@ -16,8 +14,7 @@ const Discord = require("discord.js")
       "Cannot predict now",
       "Without a doubt"
     ]
-  
-    let result = Math.floor((Math.random() * replies.length));
+
     for(i=0;i<=args.length;i++){
     question = args.join(' ')
     }
@@ -28,9 +25,8 @@ const Discord = require("discord.js")
     .setColor("#43cf1d")
     .addField("Question", question)
     .addfield("Answer", result[index])
-    message.channel.send({embed: repliesEmbed});
+    message.channel.send({embed: ballEmbed});
     message.delete();
-
  }
 
     module.exports.help = {
