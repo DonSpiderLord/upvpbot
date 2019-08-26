@@ -82,36 +82,36 @@ module.exports = async (client, options) => {
     m.channel.send({embed: SpamFilterWarn});
    }
 
-    if (message.author.bot) return;
-    if (message.channel.type !== "text" || !message.member || !message.guild || !message.channel.guild) return;
+    if (m.author.bot) return;
+    if (m.channel.type !== "text" || !m.member || !m.guild || !m.channel.guild) return;
    
-    if (message.member.roles.some(r => exemptRoles.includes(r.name)) || exemptUsers.includes(message.author.tag)) return;
+    if (m.member.roles.some(r => exemptRoles.includes(r.name)) || exemptUsers.includes(m.author.tag)) return;
 
-    if (message.author.id !== client.user.id) {
+    if (m.author.id !== client.user.id) {
       let currentTime = Math.floor(Date.now());
       authors.push({
         "time": currentTime,
-        "author": message.author.id
+        "author": m.author.id
       });
       
       messageLog.push({
-        "message": message.content,
-        "author": message.author.id
+        "message": m.content,
+        "author": m.author.id
       });
       
       let msgMatch = 0;
       for (var i = 0; i < messageLog.length; i++) {
-        if (messageLog[i].message == message.content && (messageLog[i].author == message.author.id) && (message.author.id !== client.user.id)) {
+        if (messageLog[i].message == m.content && (messageLog[i].author == m.author.id) && (m.author.id !== client.user.id)) {
           msgMatch++;
         }
       }
       
-      if (msgMatch == maxDuplicatesWarning && !warned.includes(message.author.id)) {
-        warnUser(message, warningMessage);
+      if (msgMatch == maxDuplicatesWarning && !warned.includes(m.author.id)) {
+        warnUser(m, warningMessage);
       }
 
-      if (msgMatch == maxDuplicatesBan && !banned.includes(message.author.id)) {
-        banUser(message, banMessage);
+      if (msgMatch == maxDuplicatesBan && !banned.includes(m.author.id)) {
+        banUser(m, banMessage);
       }
 
       var matched = 0;
@@ -119,11 +119,11 @@ module.exports = async (client, options) => {
       for (var i = 0; i < authors.length; i++) {
         if (authors[i].time > currentTime - interval) {
           matched++;
-          if (matched == warnBuffer && !warned.includes(message.author.id)) {
-            warnUser(message, warningMessage);
+          if (matched == warnBuffer && !warned.includes(m.author.id)) {
+            warnUser(m, warningMessage);
           } else if (matched == maxBuffer) {
-            if (!banned.includes(message.author.id)) {
-              banUser(message, banMessage);
+            if (!banned.includes(m.author.id)) {
+              banUser(m, banMessage);
             }
           }
         } else if (authors[i].time < currentTime - interval) {
