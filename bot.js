@@ -3,9 +3,22 @@ const Discord = require("discord.js");
 const prefix = botconfig.prefix;
 const badwords = require("./badwords.json");
 var profanities = badwords.profanities;
+const antispam = require("./anti_spam.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
+  antispam(client, {
+        warnBuffer: 3, // Maximum ammount of messages allowed to send in the interval time before getting warned.
+        maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned.
+        interval: 2000, // Amount of time in ms users can send the maxim amount of messages(maxBuffer) before getting banned. 
+        warningMessage: "please stop spamming!", // Message users receive when warned. (message starts with '@User, ' so you only need to input continue of it.) 
+        banMessage: "has been hit by ban hammer for spamming!", // Message sent in chat when user is banned. (message starts with '@User, ' so you only need to input continue of it.) 
+        maxDuplicatesWarning: 7,// Maximum amount of duplicate messages a user can send in a timespan before getting warned.
+        maxDuplicatesBan: 10, // Maximum amount of duplicate messages a user can send in a timespan before getting banned.
+        deleteMessagesAfterBanForPastDays: 7, // Deletes the message history of the banned user in x days.
+        exemptRoles: ["Moderator"], // Name of roles (case sensitive) that are exempt from spam filter.
+        exemptUsers: ["MrAugu#9016"] // The Discord tags of the users (e.g: MrAugu#9016) (case sensitive) that are exempt from spam filter.
+      });
   console.log(`${bot.user.username} is online!`);
 })
 
@@ -32,6 +45,7 @@ fs.readdir("./commands", (err, files) => {
 });
 
 bot.on("message", async message =>{
+  client.emit('checkMessage', msg);
   if (message.author.bot || message.channel.type === "dm") return;
   for (x = 0; x < profanities.length; x++) {
         if (message.content.includes(profanities[x])){
