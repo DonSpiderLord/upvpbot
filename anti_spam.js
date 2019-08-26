@@ -48,7 +48,8 @@ module.exports = async (client, options) => {
       banned.push(m.author.id);
   
       let user = m.guild.members.get(m.author.id);
-      if (user) {
+      try {
+        if (user) {
         user.ban(deleteMessagesAfterBanForPastDays)
           
           let BanEmbed = new Discord.RichEmbed()
@@ -61,21 +62,14 @@ module.exports = async (client, options) => {
           .addField("Moderator:", m.author.username)
           .addField("Date:", m.createdAt.toLocaleString())
 
-          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: BanEmbed});
-          
-          return true;
-        } else {
-
-          catch(e) {
-            console.log(e.stack);
-          }
-          m.channel.send("Something went wrong! Error has been sent to console.")
-          return false;
-          
-        }
-      });
+          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: BanEmbed});      
+      }
+    } catch(e){
+      console.log(e.stack);
+      m.channel.send("Something went wrong... Bot author! Check the console!");
     }
-  }
+  };
+}
   
     
    // Warn the User
