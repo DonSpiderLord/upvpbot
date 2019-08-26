@@ -7,7 +7,7 @@ const antispam = require("./anti_spam.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
-  antispam(client, {
+  antispam(bot, {
         warnBuffer: 3, // Maximum ammount of messages allowed to send in the interval time before getting warned.
         maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned.
         interval: 2000, // Amount of time in ms users can send the maxim amount of messages(maxBuffer) before getting banned. 
@@ -45,7 +45,7 @@ fs.readdir("./commands", (err, files) => {
 });
 
 bot.on("message", async message =>{
-  client.emit('checkMessage', msg);
+  bot.emit('checkMessage', msg);
   if (message.author.bot || message.channel.type === "dm") return;
   for (x = 0; x < profanities.length; x++) {
         if (message.content.includes(profanities[x])){
