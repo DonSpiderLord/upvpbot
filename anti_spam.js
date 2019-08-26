@@ -50,23 +50,22 @@ module.exports = async (client, options) => {
       let user = m.guild.members.get(m.author.id);
       if (user) {
         user.ban(deleteMessagesAfterBanForPastDays).then((member) => {
-          m.channel.send(`<@!${m.author.id}>, ${banMsg}`);
           
-          let Wembed = new Discord.RichEmbed()
+          let Banembed = new Discord.RichEmbed()
           .setColor("#0890d4")
           .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
           .setThumbnail(bot.user.displayAvatarURL)
-          .addField("Moderation:", "Warn")
-          .addField("Warner Person:", warnee.user.username)
-          .addField("Reason:", reason)
-          .addField("Moderator:", message.author.username)
+          .addField("Moderation:", "Ban")
+          .addField("Banned Person:", m.author.username)
+          .addField("Reason:", "Autoban For Spam")
+          .addField("Moderator:", m.author.username)
           .addField("Date:", message.createdAt.toLocaleString())
 
           bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Wembed});
           
           return true;
-       }).catch(() => {
-          m.channel.send(`Oops, seems like i don't have sufficient permissions to ban <@!${message.author.id}>!`);
+       }).catch(e){
+          console.log(e.stack);
           return false;
       });
     }
