@@ -61,7 +61,7 @@ module.exports = async (client, options) => {
           return true;
        }
       };
-    }
+    })
   }
   
     
