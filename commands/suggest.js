@@ -21,7 +21,7 @@ module.exports = {
         .addField("Suggestion:", suggestion)
         .addField("Suggested By:", author)
 
-        bot.guilds.channels.get('608645820287418394').send({embed: Sembed}).then(embedMessage => {
+        bot.channels.get('608645820287418394').send({embed: Sembed}).then(embedMessage => {
         embedMessage.react("👍");
         embedMessage.react("👎");
         });
