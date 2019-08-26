@@ -45,7 +45,7 @@ fs.readdir("./commands", (err, files) => {
 });
 
 bot.on("message", async message =>{
-  bot.emit('checkMessage', msg);
+  bot.emit('checkMessage', message);
   if (message.author.bot || message.channel.type === "dm") return;
   for (x = 0; x < profanities.length; x++) {
         if (message.content.includes(profanities[x])){
