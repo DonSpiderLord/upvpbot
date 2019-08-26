@@ -48,70 +48,54 @@ module.exports = async (client, options) => {
       banned.push(m.author.id);
   
       let user = m.guild.members.get(m.author.id);
-      try {
-        if (user) {
-        user.ban(deleteMessagesAfterBanForPastDays)
-          
-          let BanEmbed = new Discord.RichEmbed()
-          .setColor("#0890d4")
-          .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
-          .setThumbnail(bot.user.displayAvatarURL)
-          .addField("Moderation:", "Ban")
-          .addField("Banned Person:", m.author.username)
-          .addField("Reason:", "Autoban For Spam")
-          .addField("Moderator:", m.author.username)
-          .addField("Date:", m.createdAt.toLocaleString())
-
-          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: BanEmbed});      
-      }
-    } catch(e){
-      console.log(e.stack);
-      m.channel.send("Something went wrong... Bot author! Check the console!");
+      if (user) {
+        user.ban(deleteMessagesAfterBanForPastDays).then((member) => {
+          m.channel.send(`<@!${m.author.id}>, ${banMsg}`);
+          return true;
+       }).catch(() => {
+          m.channel.send(`Oops, seems like i don't have sufficient permissions to ban <@!${message.author.id}>!`);
+          return false;
+      });
     }
-  };
-})
+  }
   
     
    // Warn the User
    const warnUser = async (m, reply) => {
     warned.push(m.author.id);
-     
-    let SpamFilterWarn = new Discord.RichEmbed()
-    .setColor("#bf1711")
-    .setTitle(`${m.author.username} Has Been Warned For Spam!`);
-    m.channel.send({embed: SpamFilterWarn});
+    m.channel.send(`<@${m.author.id}>, ${reply}`); // Regular Mention Expression for Mentions
    }
 
-    if (m.author.bot) return;
-    if (m.channel.type !== "text" || !m.member || !m.guild || !m.channel.guild) return;
+    if (message.author.bot) return;
+    if (message.channel.type !== "text" || !message.member || !message.guild || !message.channel.guild) return;
    
-    if (m.member.roles.some(r => exemptRoles.includes(r.name)) || exemptUsers.includes(m.author.tag)) return;
+    if (message.member.roles.some(r => exemptRoles.includes(r.name)) || exemptUsers.includes(message.author.tag)) return;
 
-    if (m.author.id !== client.user.id) {
+    if (message.author.id !== client.user.id) {
       let currentTime = Math.floor(Date.now());
       authors.push({
         "time": currentTime,
-        "author": m.author.id
+        "author": message.author.id
       });
       
       messageLog.push({
-        "message": m.content,
-        "author": m.author.id
+        "message": message.content,
+        "author": message.author.id
       });
       
       let msgMatch = 0;
       for (var i = 0; i < messageLog.length; i++) {
-        if (messageLog[i].message == m.content && (messageLog[i].author == m.author.id) && (m.author.id !== client.user.id)) {
+        if (messageLog[i].message == message.content && (messageLog[i].author == message.author.id) && (message.author.id !== client.user.id)) {
           msgMatch++;
         }
       }
       
-      if (msgMatch == maxDuplicatesWarning && !warned.includes(m.author.id)) {
-        warnUser(m, warningMessage);
+      if (msgMatch == maxDuplicatesWarning && !warned.includes(message.author.id)) {
+        warnUser(message, warningMessage);
       }
 
-      if (msgMatch == maxDuplicatesBan && !banned.includes(m.author.id)) {
-        banUser(m, banMessage);
+      if (msgMatch == maxDuplicatesBan && !banned.includes(message.author.id)) {
+        banUser(message, banMessage);
       }
 
       var matched = 0;
@@ -119,11 +103,11 @@ module.exports = async (client, options) => {
       for (var i = 0; i < authors.length; i++) {
         if (authors[i].time > currentTime - interval) {
           matched++;
-          if (matched == warnBuffer && !warned.includes(m.author.id)) {
-            warnUser(m, warningMessage);
+          if (matched == warnBuffer && !warned.includes(message.author.id)) {
+            warnUser(message, warningMessage);
           } else if (matched == maxBuffer) {
-            if (!banned.includes(m.author.id)) {
-              banUser(m, banMessage);
+            if (!banned.includes(message.author.id)) {
+              banUser(message, banMessage);
             }
           }
         } else if (authors[i].time < currentTime - interval) {
@@ -137,4 +121,5 @@ module.exports = async (client, options) => {
         }
       }
     }
-  };
+  });
+}
