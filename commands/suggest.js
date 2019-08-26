@@ -18,7 +18,6 @@ module.exports = {
         let Sembed = new Discord.RichEmbed()
         .setColor("#13edc5")
         .setAuthor(`${message.guild.name} Suggestions`, message.guild.iconURL)
-        .setThumbnail(607881345997209600.user.displayAvatarURL)
         .addField("Suggestion:", suggestion)
         .addField("Suggested By:", author)
 
