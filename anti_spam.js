@@ -1,6 +1,9 @@
 //This script is made by Michael J. Scofield, thank you!
 const Discord = require("discord.js");
 
+let muteRole = message.guild.find(role => role.name == "Muted");
+
+var minutes = 180;
 var authors = [];
 var warned = [];
 var banned = [];
@@ -49,8 +52,12 @@ module.exports = async (client, options) => {
   
       let user = m.guild.members.get(m.author.id);
       if (user) {
-        user.ban(deleteMessagesAfterBanForPastDays).then((member) => {
+         user.addRole(muteRole, 'Temporary muted spammer.');
           m.channel.send(`<@!${m.author.id}>, ${banMsg}`);
+        
+          setTimout(() => {
+          member.removeRole(mutedRole, 'Temporary mute expired.');
+           }, minutes * 60000);
           return true;
        }).catch(() => {
           m.channel.send(`Oops, seems like i don't have sufficient permissions to ban <@!${message.author.id}>!`);
