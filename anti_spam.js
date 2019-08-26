@@ -1,5 +1,5 @@
 //This script is made by Michael J. Scofield, thank you!
-const Discord = require("discord.js"); // Requiring Library just for the sick of being there
+const Discord = require("discord.js");
 
 var authors = [];
 var warned = [];
