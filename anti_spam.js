@@ -60,7 +60,7 @@ module.exports = async (client, options) => {
            }, minutes * 60000);
           return true;
        }
-      });
+      };
     }
   }
   
