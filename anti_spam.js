@@ -69,7 +69,7 @@ module.exports = async (client, options) => {
       m.channel.send("Something went wrong... Bot author! Check the console!");
     }
   };
-}
+})
   
     
    // Warn the User
