@@ -1,7 +1,7 @@
 //This script is made by Michael J. Scofield, thank you!
 const Discord = require("discord.js");
 
-let muteRole = message.guild.find(role => role.name == "Muted");
+let muteRole = m.guild.find(role => role.name == "Muted");
 
 var minutes = 180;
 var authors = [];
