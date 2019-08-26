@@ -51,6 +51,19 @@ module.exports = async (client, options) => {
       if (user) {
         user.ban(deleteMessagesAfterBanForPastDays).then((member) => {
           m.channel.send(`<@!${m.author.id}>, ${banMsg}`);
+          
+          let Wembed = new Discord.RichEmbed()
+          .setColor("#0890d4")
+          .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
+          .setThumbnail(bot.user.displayAvatarURL)
+          .addField("Moderation:", "Warn")
+          .addField("Warner Person:", warnee.user.username)
+          .addField("Reason:", reason)
+          .addField("Moderator:", message.author.username)
+          .addField("Date:", message.createdAt.toLocaleString())
+
+          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Wembed});
+          
           return true;
        }).catch(() => {
           m.channel.send(`Oops, seems like i don't have sufficient permissions to ban <@!${message.author.id}>!`);
@@ -64,6 +77,11 @@ module.exports = async (client, options) => {
    const warnUser = async (m, reply) => {
     warned.push(m.author.id);
     m.channel.send(`<@${m.author.id}>, ${reply}`); // Regular Mention Expression for Mentions
+     
+    let SpamFilterWarn = new Discord.RichEmbed()
+    .setColor("#bf1711")
+    .setTitle(`${m.author.username} Has Been Warned For Language!`);
+    message.channel.send({embed: SpamFilterWwarn});
    }
 
     if (message.author.bot) return;
