@@ -126,5 +126,5 @@ module.exports = async (client, options) => {
         }
       }
     }
-  });
+  );
 }
