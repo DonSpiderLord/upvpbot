@@ -81,7 +81,7 @@ module.exports = async (client, options) => {
     let SpamFilterWarn = new Discord.RichEmbed()
     .setColor("#bf1711")
     .setTitle(`${m.author.username} Has Been Warned For Language!`);
-    message.channel.send({embed: SpamFilterWwarn});
+    message.channel.send({embed: SpamFilterWarn});
    }
 
     if (message.author.bot) return;
