@@ -49,24 +49,30 @@ module.exports = async (client, options) => {
   
       let user = m.guild.members.get(m.author.id);
       if (user) {
-        user.ban(deleteMessagesAfterBanForPastDays).then((member) => {
+        user.ban(deleteMessagesAfterBanForPastDays)
           
-          let Banembed = new Discord.RichEmbed()
+          let BanEmbed = new Discord.RichEmbed()
           .setColor("#0890d4")
-          .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
+          .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
           .setThumbnail(bot.user.displayAvatarURL)
           .addField("Moderation:", "Ban")
           .addField("Banned Person:", m.author.username)
           .addField("Reason:", "Autoban For Spam")
           .addField("Moderator:", m.author.username)
-          .addField("Date:", message.createdAt.toLocaleString())
+          .addField("Date:", m.createdAt.toLocaleString())
 
-          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Wembed});
+          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: BanEmbed});
           
           return true;
-       }).catch(e){
-          console.log(e.stack);
+        } else {
+
+          catch(e) {
+            console.log(e.stack);
+          }
+          m.channel.send("Something went wrong! Error has been sent to console.")
           return false;
+          
+        }
       });
     }
   }
@@ -75,12 +81,11 @@ module.exports = async (client, options) => {
    // Warn the User
    const warnUser = async (m, reply) => {
     warned.push(m.author.id);
-    m.channel.send(`<@${m.author.id}>, ${reply}`); // Regular Mention Expression for Mentions
      
     let SpamFilterWarn = new Discord.RichEmbed()
     .setColor("#bf1711")
-    .setTitle(`${m.author.username} Has Been Warned For Language!`);
-    message.channel.send({embed: SpamFilterWarn});
+    .setTitle(`${m.author.username} Has Been Warned For Spam!`);
+    m.channel.send({embed: SpamFilterWarn});
    }
 
     if (message.author.bot) return;
