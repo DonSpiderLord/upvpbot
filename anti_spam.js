@@ -59,9 +59,7 @@ module.exports = async (client, options) => {
           member.removeRole(mutedRole, 'Temporary mute expired.');
            }, minutes * 60000);
           return true;
-       }).catch(() => {
-          m.channel.send(`Oops, seems like i don't have sufficient permissions to ban <@!${message.author.id}>!`);
-          return false;
+       }
       });
     }
   }
