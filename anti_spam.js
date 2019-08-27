@@ -53,21 +53,21 @@ module.exports = async (client, options) => {
           let muterole = m.guild.roles.find("name", "Muted");
           user.addRole(muterole);
 
-          m.channel.send(`${user.username} Has Been Muted For 3 Hours! :mute:`);
+          m.channel.send(`${user.user.username} Has Been Muted For 3 Hours! :mute:`);
 
           let SpamFilterMuteLogEmbed = new Discord.RichEmbed()
           .setColor("#0890d4")
           .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
           .setThumbnail(client.user.displayAvatarURL)
           .addField("Moderation:", "Mute")
-          .addField("Muted Person:", user.username)
-          .addField("Moderator:", m.author.username)
+          .addField("Muted Person:", user.user.username)
+          .addField("Moderator:", client.user.username)
           .addField("Date:", m.createdAt.toLocaleString())
       
           client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
     
           setTimeout(() => {user.removeRole(muterole);}, 20 * 1000);
-          setTimeout(() => {m.channel.send(`${user.username} Has Been Unmuted! :sound:`)}, 20 * 1000);
+          setTimeout(() => {m.channel.send(`${user.user.username} Has Been Unmuted! :sound:`)}, 20 * 1000);
     }
   }
   
@@ -86,8 +86,8 @@ module.exports = async (client, options) => {
     .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
     .setThumbnail(client.user.displayAvatarURL)
     .addField("Moderation:", "Warn")
-    .addField("Muted Person:", warned.username)
-    .addField("Moderator:", m.author.username)
+    .addField("Muted Person:", user.user.username)
+    .addField("Moderator:", client.user.username)
     .addField("Date:", m.createdAt.toLocaleString())
 
     client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterWarnLogEmbed});
