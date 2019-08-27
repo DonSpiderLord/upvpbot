@@ -86,7 +86,7 @@ module.exports = async (client, options) => {
     .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
     .setThumbnail(client.user.displayAvatarURL)
     .addField("Moderation:", "Warn")
-    .addField("Muted Person:", user.user.username)
+    .addField("Muted Person:", m.author.username)
     .addField("Moderator:", client.user.username)
     .addField("Date:", m.createdAt.toLocaleString())
 
