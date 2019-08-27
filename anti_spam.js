@@ -150,6 +150,6 @@ module.exports = async (client, options) => {
           messageLog.shift();
         }
       }
-    }
+    } 
   });
 }
