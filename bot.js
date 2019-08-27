@@ -48,7 +48,6 @@ bot.on("message", async message =>{
   bot.emit('checkMessage', message);
   if (message.author.bot || message.channel.type === "dm") return;
   })
-}
   
 let args = message.content.slice(prefix.length).split(' ');
 let cmd = args.shift().toLowerCase();
