@@ -1,4 +1,5 @@
-//This script is made by Michael J. Scofield, thank you!
+//Script Made By Michael J. Scofield, Thank You!
+//Script Modified By DonSpiderLord To Fit Needs.
 const Discord = require("discord.js");
 
 var authors = [];
@@ -51,7 +52,22 @@ module.exports = async (client, options) => {
       if (user) {
           let muterole = m.guild.roles.find("name", "Muted");
           user.addRole(muterole);
+
+          m.channel.send(`${user.username} Has Been Muted For 3 Hours! :mute:`);
+
+          let SpamFilterMuteLogEmbed = new Discord.RichEmbed()
+          .setColor("#0890d4")
+          .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
+          .setThumbnail(bot.user.displayAvatarURL)
+          .addField("Moderation:", "Mute")
+          .addField("Muted Person:", user.username)
+          .addField("Moderator:", m.author.username)
+          .addField("Date:", m.createdAt.toLocaleString())
+      
+          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
+    
           setTimeout(() => {user.removeRole(muterole);}, 20 * 1000);
+          m.channel.send(`${user.username} Has Been Unmuted! :sound:`);
     }
   }
   
@@ -59,7 +75,23 @@ module.exports = async (client, options) => {
    // Warn the User
    const warnUser = async (m, reply) => {
     warned.push(m.author.id);
-    m.channel.send(`<@${m.author.id}>, ${reply}`); // Regular Mention Expression for Mentions
+
+    let SpamFilterWarnEmbed = new Discord.RichEmbed()
+    .setColor("#bf1711")
+    .setTitle(`${m.author.username} Has Been Warned For Spam!`);
+    message.channel.send({embed: SpamFilterWarnEmbed});
+
+    let SpamFilterWarnLogEmbed = new Discord.RichEmbed()
+    .setColor("#0890d4")
+    .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
+    .setThumbnail(bot.user.displayAvatarURL)
+    .addField("Moderation:", "Warn")
+    .addField("Muted Person:", user.username)
+    .addField("Moderator:", m.author.username)
+    .addField("Date:", m.createdAt.toLocaleString())
+
+    bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterWarnLogEmbed});
+    
    }
 
     if (message.author.bot) return;
