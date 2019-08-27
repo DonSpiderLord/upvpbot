@@ -67,7 +67,7 @@ module.exports = async (client, options) => {
           client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
     
           setTimeout(() => {user.removeRole(muterole);}, 20 * 1000);
-          m.channel.send(`${user.username} Has Been Unmuted! :sound:`);
+          setTimeout(() => {m.channel.send(`${user.username} Has Been Unmuted! :sound:`)}, 20 * 1000);
     }
   }
   
@@ -86,7 +86,7 @@ module.exports = async (client, options) => {
     .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
     .setThumbnail(client.user.displayAvatarURL)
     .addField("Moderation:", "Warn")
-    .addField("Muted Person:", user.username)
+    .addField("Muted Person:", warned.username)
     .addField("Moderator:", m.author.username)
     .addField("Date:", m.createdAt.toLocaleString())
 
