@@ -1,7 +1,6 @@
 //This script is made by Michael J. Scofield, thank you!
 const Discord = require("discord.js");
 
-var minutes = 180;
 var authors = [];
 var warned = [];
 var banned = [];
@@ -49,18 +48,11 @@ module.exports = async (client, options) => {
       banned.push(m.author.id);
   
       let user = m.guild.members.get(m.author.id);
-      let muteRole = m.guild.find(role => role.name == "Muted");
       if (user) {
-         user.addRole(muteRole, 'Temporary muted spammer.');
-          m.channel.send(`<@!${m.author.id}>, ${banMsg}`);
-        
-          setTimout(() => {
-          member.removeRole(mutedRole, 'Temporary mute expired.');
-           }, minutes * 60000);
-          return true;
-       }
-      };
-    })
+          let muterole = m.guild.roles.find("name", "Muted");
+          user.addRole(mute_role);
+          setTimeout(() => {member.removeRole(mute_role);}, 3 * 3600000);
+    }
   }
   
     
@@ -125,3 +117,5 @@ module.exports = async (client, options) => {
         }
       }
     }
+  });
+}
