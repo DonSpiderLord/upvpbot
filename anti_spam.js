@@ -58,13 +58,13 @@ module.exports = async (client, options) => {
           let SpamFilterMuteLogEmbed = new Discord.RichEmbed()
           .setColor("#0890d4")
           .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
-          .setThumbnail(bot.user.displayAvatarURL)
+          .setThumbnail(client.user.displayAvatarURL)
           .addField("Moderation:", "Mute")
           .addField("Muted Person:", user.username)
           .addField("Moderator:", m.author.username)
           .addField("Date:", m.createdAt.toLocaleString())
       
-          bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
+          client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
     
           setTimeout(() => {user.removeRole(muterole);}, 20 * 1000);
           m.channel.send(`${user.username} Has Been Unmuted! :sound:`);
@@ -84,13 +84,13 @@ module.exports = async (client, options) => {
     let SpamFilterWarnLogEmbed = new Discord.RichEmbed()
     .setColor("#0890d4")
     .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
-    .setThumbnail(bot.user.displayAvatarURL)
+    .setThumbnail(client.user.displayAvatarURL)
     .addField("Moderation:", "Warn")
     .addField("Muted Person:", user.username)
     .addField("Moderator:", m.author.username)
     .addField("Date:", m.createdAt.toLocaleString())
 
-    bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterWarnLogEmbed});
+    client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterWarnLogEmbed});
     
    }
 
