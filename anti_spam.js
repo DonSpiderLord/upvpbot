@@ -1,6 +1,8 @@
 //Script Made By Michael J. Scofield, Thank You!
 //Script Modified By DonSpiderLord To Fit Needs.
 const Discord = require("discord.js");
+const badwords = require("./badwords.json");
+var profanities = badwords.profanities;
 
 var authors = [];
 var warned = [];
@@ -9,7 +11,7 @@ var messageLog = [];
 
 module.exports = async (client, options) => {
   /* Option Definitions */
-  
+
   const warnBuffer = (options && options.warnBuffer) || 3; // Default Value: 3
   const maxBuffer = (options && options.maxBuffer) || 5; // Default Value: 5
   const interval = (options && options.interval) || 1000; //Default Time: 2000MS (2 Seconds in Miliseconds)
@@ -20,7 +22,7 @@ module.exports = async (client, options) => {
   const deleteMessagesAfterBanForPastDays = (options && options.deleteMessagesAfterBanForPastDays || 7); // Default Value: 10
   const exemptRoles = (options && options.exemptRoles) || []; // Default Value: Nothingness (None)
   const exemptUsers = (options && options.exemptUsers) || []; // Default Value: Nothingness (None)
-  
+
   /* Make sure all variables have correct types */
   // TO DO: Terminate process when one of these errors is runned.
 
@@ -34,10 +36,10 @@ module.exports = async (client, options) => {
   if(isNaN(deleteMessagesAfterBanForPastDays)) throw new Error("deleteMessagesAfterBanForPastDays must be a number.");
   if(exemptRoles.constructor !== Array) throw new Error("extemptRoles must be an array.");
   if(exemptUsers.constructor !== Array) throw new Error("exemptUsers must be an array.");
-  
+
   // Custom 'checkMessage' event that handles messages
  client.on("checkMessage", async (message) => {
- 
+
   // Ban the User
   const banUser = async (m, banMsg) => {
     for (var i = 0; i < messageLog.length; i++) {
@@ -45,9 +47,9 @@ module.exports = async (client, options) => {
           messageLog.splice(i);
         }
       }
-  
+
       banned.push(m.author.id);
-  
+
       let user = m.guild.members.get(m.author.id);
       if (user) {
           let muterole = m.guild.roles.find("name", "Muted");
@@ -63,15 +65,15 @@ module.exports = async (client, options) => {
           .addField("Muted Person:", user.user.username)
           .addField("Moderator:", client.user.username)
           .addField("Date:", m.createdAt.toLocaleString())
-      
+
           client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
-    
+
           setTimeout(() => {user.removeRole(muterole);}, 20 * 1000);
           setTimeout(() => {m.channel.send(`${user.user.username} Has Been Unmuted! :sound:`)}, 20 * 1000);
     }
   }
-  
-    
+
+
    // Warn the User
    const warnUser = async (m, reply) => {
     warned.push(m.author.id);
@@ -86,17 +88,17 @@ module.exports = async (client, options) => {
     .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
     .setThumbnail(client.user.displayAvatarURL)
     .addField("Moderation:", "Warn")
-    .addField("Muted Person:", m.author.username)
+    .addField("Warned Person:", m.author.username)
     .addField("Moderator:", client.user.username)
     .addField("Date:", m.createdAt.toLocaleString())
 
     client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterWarnLogEmbed});
-    
+
    }
 
     if (message.author.bot) return;
     if (message.channel.type !== "text" || !message.member || !message.guild || !message.channel.guild) return;
-   
+
     if (message.member.roles.some(r => exemptRoles.includes(r.name)) || exemptUsers.includes(message.author.tag)) return;
 
     if (message.author.id !== client.user.id) {
@@ -105,19 +107,19 @@ module.exports = async (client, options) => {
         "time": currentTime,
         "author": message.author.id
       });
-      
+
       messageLog.push({
         "message": message.content,
         "author": message.author.id
       });
-      
+
       let msgMatch = 0;
       for (var i = 0; i < messageLog.length; i++) {
         if (messageLog[i].message == message.content && (messageLog[i].author == message.author.id) && (message.author.id !== client.user.id)) {
           msgMatch++;
         }
       }
-      
+
       if (msgMatch == maxDuplicatesWarning && !warned.includes(message.author.id)) {
         warnUser(message, warningMessage);
       }
@@ -148,6 +150,29 @@ module.exports = async (client, options) => {
           messageLog.shift();
         }
       }
+    } else {
+      for (var x = 0; x < profanities.length; x++) {
+        if (message.content.includes(profanities[x])){
+            await message.reply("Don't say that here! :angry:");     
+          
+            let ChatFilterEmbed = new Discord.RichEmbed()
+            .setColor("#bf1711")
+            .setTitle(`${message.author.username} Has Been Warned For Language!`);
+            message.channel.send({embed: ChatFilterEmbed});  
+            //message.delete();
+          
+            let ChatFilterModEmbed = new Discord.RichEmbed()
+            .setColor("#bf1711")
+            .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
+            .setThumbnail(bot.user.displayAvatarURL)
+            .addField("Moderation:", "Warn")
+            .addField("Warned Person:", message.author.username)
+            .addField("Reason:", "Language")
+            .addField("Moderator:", bot.user.username)
+            .addField("Date:", message.createdAt.toLocaleString())
+
+            bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: ChatFilterModEmbed});
+            return;     
     }
   });
 }
