@@ -51,7 +51,7 @@ module.exports = async (client, options) => {
       if (user) {
           let muterole = m.guild.roles.find("name", "Muted");
           user.addRole(muterole);
-          setTimeout(() => {member.removeRole(mute_role);}, 3 * 3600000);
+          setTimeout(() => {member.removeRole(mute_role);}, 20 * 1000);
     }
   }
   
