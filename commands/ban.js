@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
 
       message.delete()
       mutee.send(`Hello, you have been banned from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:\n===============`);
-      message.channel.send(`${mutee.user.username} Has Been Succesfully Banned.`);
+      message.channel.send(`${banee.user.username} Has Been Succesfully Banned.`);
 
       let Bembed = new Discord.RichEmbed()
       .setColor("#0890d4")
