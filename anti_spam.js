@@ -66,8 +66,8 @@ module.exports = async (client, options) => {
 
           client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
 
-          setTimeout(() => {user.removeRole(muterole);}, 20 * 1000);
-          setTimeout(() => {m.channel.send(`${user.user.username} Has Been Unmuted! :sound:`)}, 20 * 1000);
+          setTimeout(() => {user.removeRole(muterole);}, 3 * 3600000);
+          setTimeout(() => {m.channel.send(`${user.user.username} Has Been Unmuted! :sound:`)}, 3 * 3600000);
     }
   }
 
