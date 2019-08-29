@@ -5,12 +5,14 @@ module.exports.run = async (bot, message, args) => {
 
     let warnee = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!warnee) return message.channel.send("Please supply a user to warn!");
-    let reason = args[1];
+    for(i = 1; i < args.length; i++){
+      let reason = args.join(' ');
+    }
     if(!reason) return message.channel.send("Please supply a reason to warn for!");
 
     let warnSuccessfulEmbed = new Discord.RichEmbed()
         .setColor("#bf1711")
-        .setTitle(`${warnee} Has Been Warned For ${reason}!`);
+        .setTitle(`${warnee.user.username} Has Been Warned For ${reason}!`);
     message.channel.send({embed: warnSuccessfulEmbed});
     message.delete();
 
