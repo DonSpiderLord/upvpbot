@@ -20,11 +20,12 @@ const Discord = require("discord.js")
     ]
 
     let index = Math.floor(Math.random() * (replies.length));
+  
     let ballEmbed = new Discord.RichEmbed()
-    .setAuthor(message.author.username)
     .setColor("#43cf1d")
     .addField("Question", question)
-    .addfield("Answer", replies[index])
+    .addField("Answer", replies[index])
+    
     message.channel.send({embed: ballEmbed});
     message.delete();
  }
