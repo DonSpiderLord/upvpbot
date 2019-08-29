@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
     let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
+    let seconds = Math.floor(totalSeconds % 60);
 
     let uptime = `Bot has been up for ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
     message.channel.send(uptime);
