@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
     let seconds = totalSeconds % 60;
 
     let uptime = `Bot has been up for ${days} days, ${hours} hours, ${minutes} minutes and ${seconds} seconds`;
-    return uptime;
+    message.channel.send(uptime);
 }
 
 module.exports.config = {
