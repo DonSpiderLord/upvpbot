@@ -1,8 +1,8 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    let uptime = bot.uptime;
-    let totalSeconds = (uptime / 1000);
+    let time = bot.uptime;
+    let totalSeconds = (time / 1000);
     let days = Math.floor(totalSeconds / 86400);
     let hours = Math.floor(totalSeconds / 3600);
     totalSeconds %= 3600;
