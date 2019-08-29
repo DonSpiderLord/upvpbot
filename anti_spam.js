@@ -1,8 +1,6 @@
 //Script Made By Michael J. Scofield, Thank You!
 //Script Modified By DonSpiderLord To Fit Needs.
 const Discord = require("discord.js");
-const badwords = require("./badwords.json");
-var profanities = badwords.profanities;
 
 var authors = [];
 var warned = [];
