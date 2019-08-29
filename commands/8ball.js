@@ -24,7 +24,7 @@ const Discord = require("discord.js")
     .setAuthor(message.author.username)
     .setColor("#43cf1d")
     .addField("Question", question)
-    .addfield("Answer", result[index])
+    .addfield("Answer", replies[index])
     message.channel.send({embed: ballEmbed});
     message.delete();
  }
