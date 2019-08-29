@@ -6,10 +6,10 @@ module.exports.run = async (bot, message, args) => {
     let warnee = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!warnee) return message.channel.send("Please supply a user to warn!");
     for(i = 1; i < args.length; i++){
-      let reason = args.join(' ');
-      if(!reason) return message.channel.send("Please supply a reason to warn for!");
+      let reason1 = args.join(' ');
     }
-    //if(!reason) return message.channel.send("Please supply a reason to warn for!");
+    let reason = reason1;
+    if(!reason) return message.channel.send("Please supply a reason to warn for!");
 
     let warnSuccessfulEmbed = new Discord.RichEmbed()
         .setColor("#bf1711")
