@@ -4,6 +4,7 @@ const prefix = botconfig.prefix;
 const badwords = require("./badwords.json");
 var profanities = badwords.profanities;
 const antispam = require("./anti_spam.js");
+const languagefilter = require("./languagefilter.js");
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
@@ -45,6 +46,7 @@ fs.readdir("./commands", (err, files) => {
 });
 
 bot.on("message", async message =>{
+  bot.emit('languagefilter', message);
   bot.emit('checkMessage', message);
   if (message.author.bot || message.channel.type === "dm") return;
   let args = message.content.slice(prefix.length).split(' ');
