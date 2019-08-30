@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 
       bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Bembed});
       banee.ban();
-      setTimeout(() => {guild.unban(baneeID)}, time * 1000);
+      setTimeout(() => {banee.unban()}, time * 1000);
       setTimeout(() => {message.channel.send(`${banee.user.username} Has Been Unbanned.`)}, time * 1000);
 
   } else {
