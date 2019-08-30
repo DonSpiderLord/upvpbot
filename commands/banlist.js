@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send("Banned Users List");
     message.guild.fetchBans().then(bans => {
           bans.forEach(user => {
-            message.channel.send(user.username + '#' + user.tag);
+            message.channel.send(user.tag);
           })
       })
   } else {
