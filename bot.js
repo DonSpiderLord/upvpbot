@@ -2,8 +2,17 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
 const antispam = require("./anti_spam.js");
-
 const bot = new Discord.Client({disableEveryone: true});
+const MongoClient = require('mongodb').MongoClient;
+
+const uri = "mongodb+srv://laughingoctapus:verizon33t-rex@u-pvp-network-database-wsrrp.gcp.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+bot.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 bot.on("ready", async () =>{
   antispam(bot, {
         warnBuffer: 3, // Maximum ammount of messages allowed to send in the interval time before getting warned.
