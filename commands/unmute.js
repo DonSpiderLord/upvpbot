@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
       mutee.removeRole(muterole.id).then(() => {
         message.delete()
         mutee.send(`Hello, you have been unmuted in ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`)
-        message.channel.send(`${mutee.user.username} was successfully unmuted.`)
+        message.channel.send(`${mutee.user.username} was successfully unmuted. :sound:`)
       })
 
       let UMembed = new Discord.RichEmbed()
