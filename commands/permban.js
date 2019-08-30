@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
       .setColor("#0890d4")
       .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
       .setThumbnail(bot.user.displayAvatarURL)
-      .addField("Moderation:", "Ban")
+      .addField("Moderation:", "Permanent Ban")
       .addField("Banned Person:", banee.user.username)
       .addField("Moderator:", message.author.username)
       .addField("Date:", message.createdAt.toLocaleString())
@@ -29,10 +29,10 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.config = {
-  name: "ban",
+  name: "permban",
   aliases: ["banish"],
-  usage: "u.ban <@user>",
-  description: "Bans Specified User.",
+  usage: "u.permban <@user>",
+  description: "Bans Specified User Permanently.",
   //noalias: "No Aliases",
   accessableby: "Owner"
 }
