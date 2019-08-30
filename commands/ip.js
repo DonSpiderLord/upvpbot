@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
   .setTitle("IP Adresses")
   .setThumbnail(bot.user.displayAvatarURL)
   //.setAuthor(bot.user.username)
-  .setDescription(`U-PvP Network Server IP's\n\n**<=Hub=>**\nIP: play.u-pvp.com\nPORT: 19132\n\n**<=PvP Server=>**\nIP: pvp.u-pvp.com\nPORT: 19132\n\n**<=Creative Server=>**\nIP: creative.u-pvp.com\nPORT: 19132\n\n**<=SkyWars Server=>**\nIP: skywars.u-pvp.com\nPORT: 19132\n\n**<=Factions Server=>**\nIP: factions.u-pvp.com\nPORT: 19132\n\n_This is not final build. IP's may change any time._`);
+  .setDescription(`U-PvP Network Server\n**IP: play.u-pvp.com**\n**PORT: 19132**\nAvailable Servers:\n:airplane_arriving:<=Hub=>:airplane_departure:\n:crossed_swords:<=PvP Server=>:shield:\n:construction_site:<=Creative Server=>:homes:\n<=SkyWars Server=>   **Coming Soon**\n<=Factions Server=>   **Coming Soon**`);
   message.channel.send({embed: IPEmbed});
 
 
