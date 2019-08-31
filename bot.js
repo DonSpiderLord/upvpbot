@@ -47,7 +47,7 @@ bot.on("message", async message =>{
   bot.emit('checkMessage', message);
   if (message.author.bot || message.channel.type === "dm") return;
 
-  let xpAdd = new.Math.floor(Math.random() * 7) + 8;
+  let xpAdd = new Math.floor(Math.random() * 7) + 8;
 
   if(!xp[message.author.id]){
     xp[message.author.id] = {
