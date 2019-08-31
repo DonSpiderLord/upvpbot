@@ -2,8 +2,6 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
 const antispam = require("./anti_spam.js");
-var redis = require('redis');
-var client = redis.createClient(process.env.REDISCLOUD_URL, {no_ready_check: true});
 const xp = require("./xp.json");
 
 const bot = new Discord.Client({disableEveryone: true});
