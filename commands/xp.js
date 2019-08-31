@@ -21,7 +21,7 @@ let lvlEmbed = new Discord.RichEmbed()
 .setColor("#ffffff")
 .addField("Current Level", curlvl, true)
 .addField("Current XP", curxp, true)
-.addFooter(`${diff} XP To Level Up`, message.author.displayAvatarURL)
+.setFooter(`${diff} XP To Level Up`, message.author.displayAvatarURL)
 
 message.channel.send({embed: lvlEmbed});
 
