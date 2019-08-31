@@ -1,8 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
-const badwords = require("./badwords.json");
-var profanities = badwords.profanities;
 const antispam = require("./anti_spam.js");
 
 const bot = new Discord.Client({disableEveryone: true});
