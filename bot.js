@@ -1,16 +1,18 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
+const badwords = require("./badwords.json");
+var profanities = badwords.profanities;
 const antispam = require("./anti_spam.js");
-const bot = new Discord.Client({disableEveryone: true});
 
+const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
   antispam(bot, {
         warnBuffer: 3, // Maximum ammount of messages allowed to send in the interval time before getting warned.
         maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned.
-        interval: 3000, // Amount of time in ms users can send the maxim amount of messages(maxBuffer) before getting banned. 
-        warningMessage: "stop spamming! :oncoming_police_car:", // Message users receive when warned. (message starts with '@User, ' so you only need to input continue of it.) 
-        banMessage: "has been banned for spamming!", // Message sent in chat when user is banned. (message starts with '@User, ' so you only need to input continue of it.) 
+        interval: 3000, // Amount of time in ms users can send the maxim amount of messages(maxBuffer) before getting banned.
+        warningMessage: "stop spamming! :oncoming_police_car:", // Message users receive when warned. (message starts with '@User, ' so you only need to input continue of it.)
+        banMessage: "has been banned for spamming!", // Message sent in chat when user is banned. (message starts with '@User, ' so you only need to input continue of it.)
         maxDuplicatesWarning: 3,// Maximum amount of duplicate messages a user can send in a timespan before getting warned.
         maxDuplicatesBan: 5, // Maximum amount of duplicate messages a user can send in a timespan before getting banned.
         deleteMessagesAfterBanForPastDays: 7, // Deletes the message history of the banned user in x days.
@@ -45,6 +47,36 @@ fs.readdir("./commands", (err, files) => {
 bot.on("message", async message =>{
   bot.emit('checkMessage', message);
   if (message.author.bot || message.channel.type === "dm") return;
+
+  let xpAdd = new.Math.floor(Math.random() * 7) + 8;
+
+  if(!xp[message.author.id]){
+    xp[message.author.id] = {
+      xp: 0,
+      level: 1
+    };
+  }
+
+  let curxp = xp[message.author.id].xp;
+  let curlvl = xp[message.author.id].level;
+  let nxtlvl = xp[message.author.id].level * 500;
+  xp[message.author.id].xp = curxp + xpAdd;
+
+  if(nxtlvl <= xp.[message.author.id]){
+      xp[message.author.id].level = curlvl + 1;
+      let lvlup = new Discord.RichEmbed()
+      .setTitle(`:tada: Congrats ${message.author.username}! :tada:`)
+      .setColor("#ffffff")
+      .addField(`You Just Leveled Up To Level ${curlvl + 1}`)
+
+      message.channel.send({embed: lvlup});
+
+  }
+
+  fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+    if(err) console.log(err)
+  });
+
   let args = message.content.slice(prefix.length).split(' ');
   let cmd = args.shift().toLowerCase();
 
