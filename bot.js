@@ -2,6 +2,7 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
 const antispam = require("./anti_spam.js");
+const xp = require("./xp.json");
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
@@ -45,6 +46,35 @@ fs.readdir("./commands", (err, files) => {
 bot.on("message", async message =>{
   bot.emit('checkMessage', message);
   if (message.author.bot || message.channel.type === "dm") return;
+
+  let xpAdd = new.Math.floor(Math.random() * 7) + 8;
+
+  if(!xp[message.author.id]){
+    xp[message.author.id] = {
+      xp: 0,
+      level: 1
+    };
+  }
+
+  let curxp = xp[message.author.id].xp;
+  let curlvl = xp[message.author.id].level;
+  let nxtlvl = xp[message.author.id].level * 500;
+  xp[message.author.id].xp = curxp + xpAdd;
+
+  if(nxtlvl <= xp.[message.author.id]){
+      xp[message.author.id].level = curlvl + 1;
+      let lvlup = new Discord.RichEmbed()
+      .setTitle(`:tada: Congrats ${message.author.username}! :tada:`)
+      .setColor("#ffffff")
+      .addField(`You Just Leveled Up To Level ${curlvl + 1}`)
+
+      message.channel.send({embed: lvlup});
+
+  }
+
+  fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+    if(err) console.log(err)
+  });
 
   let args = message.content.slice(prefix.length).split(' ');
   let cmd = args.shift().toLowerCase();
