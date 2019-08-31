@@ -17,11 +17,11 @@ let diff = nxtlvl - curxp;
 
 
 let lvlEmbed = new Discord.RichEmbed()
-.setAuthor(message.author.username)
+.setAuthor(message.author.username, message.author.displayAvatarURL)
 .setColor("#ffffff")
 .addField("Current Level", curlvl, true)
 .addField("Current XP", curxp, true)
-.setFooter(`${diff} XP To Level Up`, message.author.displayAvatarURL)
+.setFooter(`${diff} XP To Level Up`)
 
 message.channel.send({embed: lvlEmbed});
 
