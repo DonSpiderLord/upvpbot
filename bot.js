@@ -61,7 +61,7 @@ bot.on("message", async message =>{
   let nxtlvl = xp[message.author.id].level * 500;
   xp[message.author.id].xp = curxp + xpAdd;
 
-  if(nxtlvl <= xp.[message.author.id]){
+  if(nxtlvl <= curxp){
       xp[message.author.id].level = curlvl + 1;
       let lvlup = new Discord.RichEmbed()
       .setTitle(`:tada: Congrats ${message.author.username}! :tada:`)
