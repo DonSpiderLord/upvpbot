@@ -31,7 +31,7 @@ module.exports.config = {
     name: "xp",
     aliases: ["level"],
     usage: "u.xp",
-    description: "Get Your XP",
+    description: "Get Your XP and Level",
     //noalias: "No Aliases",
     accessableby: "Anyone"
 }
