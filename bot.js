@@ -4,6 +4,7 @@ const prefix = botconfig.prefix;
 const badwords = require("./badwords.json");
 var profanities = badwords.profanities;
 const antispam = require("./anti_spam.js");
+const xp = require("./xp.json);
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
