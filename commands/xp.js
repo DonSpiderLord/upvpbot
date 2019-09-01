@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const xp = require("../xp.json");
+const xp = require("https://jsonblob.com/0e790435-cca6-11e9-af14-af9c4fc46438");
 
 module.exports.run = async (bot, message, args) => {
 
