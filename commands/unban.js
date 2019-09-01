@@ -2,7 +2,7 @@ const botconfig = require("../botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, guild, message, args) => {
       if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager"].includes(r.name)) ) {
         
         let unbanee = message.mentions.members.first() || message.guild.members.get(args[0]);
