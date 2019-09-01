@@ -2,7 +2,7 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
 const antispam = require("./anti_spam.js");
-const xp = require("./xp.json");
+const xp = require("https://jsonblob.com/0e790435-cca6-11e9-af14-af9c4fc46438");
 
 const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
@@ -72,7 +72,7 @@ bot.on("message", async message =>{
 
   }
 
-  fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
+  fs.writeFile("https://jsonblob.com/0e790435-cca6-11e9-af14-af9c4fc46438", JSON.stringify(xp), (err) => {
     if(err) console.log(err)
   });
 
