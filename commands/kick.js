@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    if(message.member.roles.some(r=>["Owner"].includes(r.name)) ) {
+    if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+", "Moderator"].includes(r.name)) ) {
       let kickee = message.mentions.members.first() || message.guild.members.get(args[0]);
       if(!kickee) return message.channel.send("Please supply a user to kick!");
 
