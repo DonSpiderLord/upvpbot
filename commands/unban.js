@@ -3,7 +3,7 @@ const Discord = require("discord.js");
 const prefix = botconfig.prefix
 
 module.exports.run = async (bot, message, args) => {
-      if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+", "Moderator", "Trial-Mod"].includes(r.name)) ) {
+      if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager"].includes(r.name)) ) {
         
         let unbanee = args[0];
         message.guild.unban(unbanee);
