@@ -72,7 +72,7 @@ bot.on("message", async message =>{
 
   }
 
-  fs.writeFile("https://jsonblob.com/0e790435-cca6-11e9-af14-af9c4fc46438", JSON.stringify(xp), (err) => {
+  fs.writeFile("./xp.json", JSON.stringify(xp), (err) => {
     if(err) console.log(err)
   });
 
