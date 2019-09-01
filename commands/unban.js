@@ -2,11 +2,11 @@ const botconfig = require("../botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix
 
-module.exports.run = async (bot, guild, message, args) => {
+module.exports.run = async (bot, message, args) => {
       if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager"].includes(r.name)) ) {
         
         let unbanee = message.mentions.members.first() || message.guild.members.get(args[0]);
-        let unbanperson = guild.member(unbanee)
+        let unbanperson = message.guild.member(unbanee)
         message.guild.unban(unbanperson);
         message.channel.send(`User ${unbanee} has been unbanned.`)
         let uEmbed = new Discord.RichEmbed()
