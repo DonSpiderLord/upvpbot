@@ -13,31 +13,9 @@ module.exports.run = async (bot, message, args) => {
             let user = bans.find(user => user.username === User);
                   message.guild.unban(user.id);
                   message.channel.send(`User ${User} has been unbanned.`)
-                  let uEmbed = new Discord.RichEmbed()
-                  .setColor("#0890d4")
-                  .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
-                  .setThumbnail(bot.user.displayAvatarURL)
-                  .addField("Moderation:", "Unban")
-                  .addField("Unbanned ID", User)
-                  .addField("Unbanned By:", message.author.username)
-                  .addField("Date:", message.createdAt.toLocaleString())
-
-                  bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: uEmbed});
-                  message.delete();
          } else if (bans.some(u => User.includes(u.id))) {
                   message.guild.unban(User);
                   message.channel.send(`User ${User} has been unbanned.`)
-                  let uEmbed = new Discord.RichEmbed()
-                  .setColor("#0890d4")
-                  .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
-                  .setThumbnail(bot.user.displayAvatarURL)
-                  .addField("Moderation:", "Unban")
-                  .addField("Unbanned ID", User)
-                  .addField("Unbanned By:", message.author.username)
-                  .addField("Date:", message.createdAt.toLocaleString())
-
-                  bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: uEmbed});
-                  message.delete();
          } else {
             return message.reply(`This person is not banned.`);
          }
