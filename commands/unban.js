@@ -5,7 +5,7 @@ const prefix = botconfig.prefix
 module.exports.run = async (bot, message, args) => {
       if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager"].includes(r.name)) ) {
         
-        let unbanee = args[0];
+        let unbanee = message.mentions.members.first() || message.guild.members.get(args[0]);
         message.guild.unban(unbanee.user.id);
         message.channel.send(`User ${unbanee} has been unbanned.`)
         let uEmbed = new Discord.RichEmbed()
