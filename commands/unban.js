@@ -5,20 +5,20 @@ const prefix = botconfig.prefix
 module.exports.run = async (bot, message, args) => {
       if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager"].includes(r.name)) ) {
         
-        let unbanee = args[0];
-        if(!unbanee) return message.channel.send("Please supply a user to unban.");
+        let User = args[0];
+        if(!User) return message.channel.send("Please supply a user to unban.");
         message.guild.fetchBans()
         .then(bans => {
             if (bans.some(u => User.includes(u.username))) {
-            let user = bans.find(user => user.username === unbanee);
+            let user = bans.find(user => user.username === User);
                   message.guild.unban(user.id);
-                  message.channel.send(`User ${unbanee} has been unbanned.`)
+                  message.channel.send(`User ${User} has been unbanned.`)
                   let uEmbed = new Discord.RichEmbed()
                   .setColor("#0890d4")
                   .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
                   .setThumbnail(bot.user.displayAvatarURL)
                   .addField("Moderation:", "Unban")
-                  .addField("Unbanned ID", unbanee)
+                  .addField("Unbanned ID", User)
                   .addField("Unbanned By:", message.author.username)
                   .addField("Date:", message.createdAt.toLocaleString())
 
@@ -26,13 +26,13 @@ module.exports.run = async (bot, message, args) => {
                   message.delete();
          } else if (bans.some(u => User.includes(u.id))) {
                   message.guild.unban(User);
-                  message.channel.send(`User ${unbanee} has been unbanned.`)
+                  message.channel.send(`User ${User} has been unbanned.`)
                   let uEmbed = new Discord.RichEmbed()
                   .setColor("#0890d4")
                   .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
                   .setThumbnail(bot.user.displayAvatarURL)
                   .addField("Moderation:", "Unban")
-                  .addField("Unbanned ID", unbanee)
+                  .addField("Unbanned ID", User)
                   .addField("Unbanned By:", message.author.username)
                   .addField("Date:", message.createdAt.toLocaleString())
 
