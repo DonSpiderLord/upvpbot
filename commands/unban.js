@@ -1,0 +1,31 @@
+const botconfig = require("../botconfig.json");
+const Discord = require("discord.js");
+const prefix = botconfig.prefix
+
+module.exports.run = async (bot, message, args) => {
+      if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+", "Moderator", "Trial-Mod"].includes(r.name)) ) {
+        
+        let unbanee = args[0];
+        message.guild.unban(unbanee);
+        .setColor("#0890d4")
+        .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
+        .setThumbnail(bot.user.displayAvatarURL)
+        .addField("Moderation:", "Unban")
+        .addField("Unbanned ID", unbanee)
+        .addField("Unbanned By:", message.author.username)
+        .addField("Date:", message.createdAt.toLocaleString())
+
+        bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Wembed});
+   } else {
+        return message.channel.send("You don't have permission to use this command!");
+   }      
+}
+
+module.exports.config = {
+  name: "unban",
+  aliases: ["unbanid"],
+  usage: "u.unban",
+  description: "Unbans ID",
+  //noalias: "No Aliases",
+  accessableby: "Staff"
+}
