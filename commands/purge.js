@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-    if(message.member.roles.some(r=>["Owner"].includes(r.name)) ) {
+    if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin"].includes(r.name)) ) {
         const amount = args[0];
         if (!amount) return message.reply('You must specify an amount to delete! (Min: 2 Max: 100)');
         message.channel.fetchMessages({
