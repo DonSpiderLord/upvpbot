@@ -1,7 +1,7 @@
 let Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-  if(message.member.roles.some(r=>["Owner"].includes(r.name)) ) {
+  if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin"].includes(r.name)) ) {
     message.channel.send("Banned Users List\n===============");
     message.guild.fetchBans().then(bans => {
           bans.forEach(user => {
