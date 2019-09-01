@@ -7,6 +7,7 @@ module.exports.run = async (bot, message, args) => {
         
         let unbanee = args[0];
         message.guild.unban(unbanee);
+        let uEmbed = new Discord.RichEmbed()
         .setColor("#0890d4")
         .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
         .setThumbnail(bot.user.displayAvatarURL)
@@ -15,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Unbanned By:", message.author.username)
         .addField("Date:", message.createdAt.toLocaleString())
 
-        bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Wembed});
+        bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: uEmbed});
    } else {
         return message.channel.send("You don't have permission to use this command!");
    }      
