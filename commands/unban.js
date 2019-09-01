@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
       if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager"].includes(r.name)) ) {
         
         let unbanee = args[0];
-        message.guild.unban(unbanee);
+        message.guild.unban(unbanee.id);
         message.channel.send(`User with ID ${unbanee} has been unbanned.`)
         let uEmbed = new Discord.RichEmbed()
         .setColor("#0890d4")
