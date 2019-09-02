@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
       const member = message.guild.member(kickee)
       if (kickee){
         message.delete()
-        banee.send(`Hello, you have been kicked from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`).then(() =>
+        kickee.send(`Hello, you have been kicked from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`).then(() =>
         member.kick({reason: 'They were bad!',}))
         message.channel.send(`${kickee.user.username} was successfully kicked.`)
 
