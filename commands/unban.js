@@ -5,13 +5,12 @@ const prefix = botconfig.prefix
 module.exports.run = async (bot, message, args) => {
       if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager"].includes(r.name)) ) {
         
-        let user = message.mentions.members.first() || message.guild.members.get(args[0]) || args[0];
+        let user = message.mentions.members.first().id || message.guild.members.get(args[0]) || args[0];
         if(!user) return message.channel.send("Please supply a user to unban.");
-        let id = user.id;
         
         message.guild.fetchBans()
         .then(bans => {
-             message.guild.unban(id);    
+             message.guild.unban(user);    
         });
    } else {
         return message.channel.send("You don't have permission to use this command!");
