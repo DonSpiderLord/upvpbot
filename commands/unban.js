@@ -7,7 +7,8 @@ module.exports.run = async (bot, message, args) => {
         
         let User = args[0];
         if(!User) return message.channel.send("Please supply a user to unban.");
-        message.guild.fetchBans()
+        message.channel.send(User.id);
+        /*message.guild.fetchBans()
         .then(bans => {
             if (bans.some(u => User.includes(u.username))) {
             let user = bans.find(user => user.username === User);
@@ -19,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
          } else {
             return message.reply(`This person is not banned.`);
          }
-    });
+    });*/
    } else {
         return message.channel.send("You don't have permission to use this command!");
    }      
