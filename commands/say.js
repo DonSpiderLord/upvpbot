@@ -2,8 +2,9 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+"].includes(r.name)) ) {
+    let text = args;    
     for (i = 0; i < args.length; i++){
-        let text = args.join(' ');  
+       text = args.join(' ');  
     }
     
     message.channel.send(text);
