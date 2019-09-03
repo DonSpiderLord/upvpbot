@@ -13,7 +13,6 @@ module.exports.run = async (bot, message, args) => {
 
     mutee.addRole(muterole.id).then(() => {
       message.delete()
-      mutee.send(`Hello, you have been muted in ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`);
       message.channel.send(`${mutee.user.username} Has Been Muted For ${time} Hours! :mute:`);
 
       setTimeout(() => {mutee.removeRole(muterole);}, time * 3600000);
