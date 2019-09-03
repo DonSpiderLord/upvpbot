@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
     for (i = 0; i <= args.length; i++){
        text = args.join(' ');  
     }
-    
+    message.delete();
     message.channel.send(text);
   } else {
     return message.channel.send("You don't have permission to use this command!");
