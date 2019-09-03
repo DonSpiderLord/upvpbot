@@ -9,8 +9,7 @@ module.exports.run = async (bot, message, args) => {
       if(!muterole) return message.channel.send("There is no mute role!");
 
       mutee.removeRole(muterole.id).then(() => {
-        message.delete()
-        mutee.send(`Hello, you have been unmuted in ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`)
+        message.delete();
         message.channel.send(`${mutee.user.username} was successfully unmuted. :sound:`)
       })
 
