@@ -10,8 +10,7 @@ module.exports.run = async (bot, message, args) => {
       if(time > 24) return message.channel.send("Max ban time is 24 Hours!");
       if(!time) return message.channel.send("Please supply how long the person will be banned!");
       
-      message.delete()
-      banee.send(`Hello, you have been banned from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:\n===============`);
+      message.delete();
       message.channel.send(`${banee.user.username} Has Been Banned For ${time} Hours.`);
 
       let Bembed = new Discord.RichEmbed()
