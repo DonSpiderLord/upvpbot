@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         .setTitle("Help Menu")
         .setThumbnail(bot.user.displayAvatarURL)
         //.setAuthor(bot.user.username)
-        .setDescription("These Are Links To Our Social Media Profiles/Websites:\n\n**Discord** - `discord.gg/8hCeYgc`\n\n**Twitter** - `twitter.com/UPVP_Network`\n\n**Instagram** - `instagram.com/upvp_network`\n\n**U-PvP Website** - `u-pvp.com`\n\n**Voting Sites** - `u-pvp.com/vote1` And`u-pvp.com/vote2`");
+        .setDescription("These Are Links To Our Social Media Profiles/Websites:\n\n**Discord** - `discord.gg/8hCeYgc`\n\n**Twitter** - `twitter.com/UPVP_Network`\n\n**Instagram** - `instagram.com/upvp_network`\n\n**U-PvP Website** - `u-pvp.com`\n\n**Voting Sites** - `u-pvp.com/vote1` And `u-pvp.com/vote2`");
         message.channel.send({embed: sEmbed});
     }
 
