@@ -8,8 +8,7 @@ module.exports.run = async (bot, message, args) => {
       const member = message.guild.member(kickee)
       if (kickee){
         message.delete()
-        kickee.send(`Hello, you have been kicked from ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`).then(() =>
-        member.kick({reason: 'They were bad!',}))
+        member.kick({reason: 'Kick From U-Pvp Network!',});
         message.channel.send(`${kickee.user.username} was successfully kicked.`)
 
         let Bembed = new Discord.RichEmbed()
