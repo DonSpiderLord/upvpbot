@@ -9,8 +9,7 @@ module.exports.run = async (bot, message, args) => {
     let muterole = message.guild.roles.find(r => r.name === "Muted");
 
     mutee.addRole(muterole.id).then(() => {
-      message.delete()
-      mutee.send(`Hello, you have been muted in ${message.guild.name}.\nThis is automated message. Don't respond to it.\nHave A Nice Day :wave:`);
+      message.delete();
       message.channel.send(`${mutee.user.username} Has Been Permanently Muted! :mute:`);
     })
 
