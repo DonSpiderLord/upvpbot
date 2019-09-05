@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
       let baneeID = banee.user.id;
       
       let time = args[1];
-      if(time > 24) return message.channel.send("Max ban time is 24 Hours!");
+      if(time > 48) return message.channel.send("Max ban time is 48 Hours!");
       if(!time) return message.channel.send("Please supply how long the person will be banned!");
       
       message.delete();
