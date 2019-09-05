@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
                 message.member.removeRole(muterole);
                 message.channel.send(`${message.author.username} Has Been Unmuted. :sound:`);
             } else {
-                console.log(`Tried Unmuting a user ${message.author.username}, but user was already unmuted!`);
+                console.log(`Tried Unmuting a user ${mutee.user.username}, but user was already unmuted!`);
             }
          }, time * 3600000);
     })
