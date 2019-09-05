@@ -15,8 +15,14 @@ module.exports.run = async (bot, message, args) => {
       message.delete()
       message.channel.send(`${mutee.user.username} Has Been Muted For ${time} Hours! :mute:`);
 
-      setTimeout(() => {mutee.removeRole(muterole);}, time * 3600000);
-      setTimeout(() => {message.channel.send(`${mutee.user.username} Has Been Unmuted! :sound:`)}, time * 3600000);
+      setTimeout(() => {
+            if(message.member.roles.some(r=>["Muted"].includes(r.name)) ) {
+                message.member.removeRole(muterole);
+                message.channel.send(`${message.author.username} Has Been Unmuted. :sound:`);
+            } else {
+                console.log(`Tried Unmuting a user ${message.author.username}, but user was already unmuted!`);
+            }
+         }, time * 3600000);
     })
 
     let Membed = new Discord.RichEmbed()
