@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Suggestion:", suggestion)
         .addField("Suggested By:", author)
 
-        bot.guilds.get('607885235719372801').channels.get('608645820287418394').send({embed: Sembed}).then(embedMessage => {
+        bot.guilds.get('569546798725726236').channels.get('585062018286092299').send({embed: Sembed}).then(embedMessage => {
           embedMessage.react('✅')
 		  .then(() => embedMessage.react('❌'))
         });
