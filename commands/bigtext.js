@@ -4,7 +4,7 @@ const Discord = require("discord.js")
     for(i=0;i<=args.length;i++){
      text = args.join(' ')
     }
-    var result = text.fontsize(7);
+    var result = text.toUpperCase();
     message.channel.send(result);
  }
 
