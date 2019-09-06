@@ -2,8 +2,8 @@ const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-  message.channel.send("Inicializing setup...").then(m => {
-  setTimeout(() => {m.edit("**Setup In Progress**\n========================\n:black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:\nExtracting Modules...\n========================")}, 5 * 1000);
+  message.channel.send("**Setup In Progress**\n========================\n:black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:\nInitializing Setup...\n========================").then(m => {
+  setTimeout(() => {m.edit("**Setup In Progress**\n========================\n:white_check_mark: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:\nExtracting Modules...\n========================")}, 5 * 1000);
   setTimeout(() => {m.edit("**Setup In Progress**\n========================\n:white_check_mark: :white_check_mark: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:\nExtracting Commands...\n========================")}, 8 * 1000);
   setTimeout(() => {m.edit("**Setup In Progress**\n========================\n:white_check_mark: :white_check_mark: :white_check_mark: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:\nEnabling Spam & Language Filters...\n========================")}, 14 * 1000);
   setTimeout(() => {m.edit("**Setup In Progress**\n========================\n:white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :black_square_button: :black_square_button: :black_square_button: :black_square_button: :black_square_button:\nGetting Channel ID's...\n========================")}, 17 * 1000);
