@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Reporter:", author)
         .addField("Date:", message.createdAt.toLocaleString())
 
-        bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Rembed});
+        bot.guilds.get('569546798725726236').channels.get('601215977455222794').send({embed: Rembed});
     } else if(message.member.roles.some(r=>["ReportBan"].includes(r.name)) ){
 
       return message.channel.send("You have been banned from using this command!");
