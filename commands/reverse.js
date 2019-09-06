@@ -4,21 +4,21 @@ const Discord = require("discord.js")
     for(i=0;i<=args.length;i++){
      text = args.join(' ')
     }
-    funtion reverseString(text) {
+    funtion reverse(text) {
       if (text === ""){
         return "";
       } else {
-        return reverseString(text.substr(1)) + text.charAt(0);
+        return reverse(text.substr(1)) + text.charAt(0);
       }
     }
-    message.channel.send(reverseString);
  }
 
     module.exports.config = {
-        name: "bigtext",
-        aliases: ["bigfont"],
-        usage: "u.bigtext",
-        description: "Makes text lot bigger.",
+        name: "reverse",
+        aliases: ["r"],
+        usage: "u.reverse",
+        description: "Reverse text.",
         //noalias: "No Aliases",
         accessableby: "Anyone"
     }
+
