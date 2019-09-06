@@ -6,7 +6,7 @@ const Discord = require("discord.js")
     }
     funtion reverseString(text) {
       if (text === ""){
-        reverse "";
+        return "";
       } else {
         return reverseString(text.substr(1)) + text.charAt(0);
       }
