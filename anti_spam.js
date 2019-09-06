@@ -64,7 +64,7 @@ module.exports = async (client, options) => {
           .addField("Moderator:", client.user.username)
           .addField("Date:", m.createdAt.toLocaleString())
 
-          client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterMuteLogEmbed});
+          client.guilds.get('569546798725726236').channels.get('619567070329438229').send({embed: SpamFilterMuteLogEmbed});
 
           setTimeout(() => {user.removeRole(muterole);}, 3 * 3600000);
           setTimeout(() => {m.channel.send(`${user.user.username} Has Been Unmuted! :sound:`)}, 3 * 3600000);
@@ -90,7 +90,7 @@ module.exports = async (client, options) => {
     .addField("Moderator:", client.user.username)
     .addField("Date:", m.createdAt.toLocaleString())
 
-    client.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: SpamFilterWarnLogEmbed});
+    client.guilds.get('569546798725726236').channels.get('619567070329438229').send({embed: SpamFilterWarnLogEmbed});
 
    }
 
