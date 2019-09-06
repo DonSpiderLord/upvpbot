@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
        text = args.join(' ');  
     }
     message.delete();
-    bot.guilds.get('607885235719372801').channels.get('608646066019106870').send(text);
+    bot.guilds.get('569546798725726236').channels.get('579430209833402368').send(text);
   } else {
     return message.channel.send("You don't have permission to use this command!");
   }
