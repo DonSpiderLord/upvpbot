@@ -25,8 +25,8 @@ module.exports.run = async (bot, message, args) => {
     message.channel.send({embed: sEmbed})}, 50 * 1000);
   });
   } else {
-    
   }
+}
 module.exports.config = {
   name: "setup",
   aliases: ["extractmodules"],
