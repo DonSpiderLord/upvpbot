@@ -4,7 +4,7 @@ const Discord = require("discord.js")
     for(i=0;i<=args.length;i++){
      text = args.join(' ')
     }
-    funtion reverse(text) {
+    reverse(text) {
       if (text === ""){
         return "";
       } else {
