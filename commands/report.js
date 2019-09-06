@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
       let server = args[2];
 
         message.delete()
-        message.channel.send(`${rUser} was successfully reported for test.`)
+        message.channel.send(`${rUser} was successfully reported.`)
 
         let Rembed = new Discord.RichEmbed()
         .setColor("#0890d4")
