@@ -4,14 +4,13 @@ const Discord = require("discord.js")
     for(i=0;i<=args.length;i++){
      text = args.join(' ')
     }
-    reverse(text) {
-      if (text === "")
+    reverse(text) 
+      if (text === ""){
         return "";
-       else
+      } else {
         return reverse(text.substr(1)) + text.charAt(0);
-      
-    }
- }
+      }
+  }
 
     module.exports.config = {
         name: "reverse",
