@@ -20,7 +20,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Bug:", bugReport)
         .addField("Reported By:", author)
 
-        bot.guilds.get('607885235719372801').channels.get('617745698783363072').send({embed: bRembed});
+        bot.guilds.get('569546798725726236').channels.get('579430209833402368').send({embed: bRembed});
 
     } else if(message.member.roles.some(r=>["SuggestionBan"].includes(r.name)) ){
 
