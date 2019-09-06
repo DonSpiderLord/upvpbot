@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
     .addField("Moderator:", message.author.username)
     .addField("Date:", message.createdAt.toLocaleString())
 
-    bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Membed});
+    bot.guilds.get('569546798725726236').channels.get('619567070329438229').send({embed: Membed});
 
 } else {
 
