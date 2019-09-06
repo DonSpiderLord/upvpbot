@@ -5,11 +5,11 @@ const Discord = require("discord.js")
      text = args.join(' ')
     }
     reverse(text) {
-      if (text === ""){
+      if (text === "")
         return "";
-      } else {
+       else
         return reverse(text.substr(1)) + text.charAt(0);
-      }
+      
     }
  }
 
