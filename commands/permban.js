@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
       if(!banee) return message.channel.send("Please supply a user to ban!");
 
       message.delete()
-      message.channel.send(`${banee.user.username} Has Been Succesfully Banned.`);
+      message.channel.send(`${banee.user.username} Has Been Permanently Banned.`);
 
       let Bembed = new Discord.RichEmbed()
       .setColor("#0890d4")
@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
       .addField("Moderator:", message.author.username)
       .addField("Date:", message.createdAt.toLocaleString())
 
-      bot.guilds.get('607885235719372801').channels.get('608577419527454730').send({embed: Bembed});
+      bot.guilds.get('569546798725726236').channels.get('619567070329438229').send({embed: Bembed});
       banee.ban();
 
   } else {
