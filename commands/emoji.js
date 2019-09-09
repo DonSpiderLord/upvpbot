@@ -71,13 +71,7 @@ module.exports.run = async (bot, message, args) => {
 ]
 
   let index = Math.floor(Math.random() * (emojis.length)); // Math.random() returns a float from 0 - 1.
-  let emojiEmbed = new Discord.RichEmbed()
-  .setColor("#43cf1d")
-  .setDescription(emojis[index])
-  message.channel.send({embed: emojiEmbed});
-  message.delete();
-
-
+  message.channel.send({emojis[index]);
 }
 
 module.exports.config = {
