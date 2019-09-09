@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-  if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+", "Moderator", "Trial-Mod"].includes(r.name)) ) {
+  if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+", "Mod", "Trial-Mod"].includes(r.name)) ) {
 
     let warnee = message.mentions.members.first() || message.guild.members.get(args[0]);
     if(!warnee) return message.channel.send("Please supply a user to warn!");
