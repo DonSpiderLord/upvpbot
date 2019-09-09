@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 		  .then(() => embedMessage.react('❌'))
         });
 
-    } else if(message.member.roles.some(r=>["SuggestionBan"].includes(r.name)) ){
+    } else if(message.member.roles.find(r=>["SuggestionBan"].includes(r.name)) ){
 
       return message.channel.send("You have been banned from using this command!");
 
