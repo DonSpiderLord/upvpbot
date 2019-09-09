@@ -10,6 +10,7 @@ module.exports.run = async (bot, message, args) => {
     if(time > 12) return message.channel.send("Max Mute Time Is 12 Hours");
     if(!time) return message.channel.send("Please Supply Mute Duration");
     let muterole = message.guild.roles.find(r => r.name === "Muted");
+    let pesrole = message.guild.roles.find(r => r.name === "Peasant");
 
     mutee.addRole(muterole.id).then(() => {
       message.delete()
@@ -17,8 +18,9 @@ module.exports.run = async (bot, message, args) => {
 
       setTimeout(() => {
             if(message.member.roles.some(r=>["Muted"].includes(r.name)) ) {
-                message.member.removeRole(muterole);
+                mutee.removeRole(muterole.id);
                 message.channel.send(`${message.author.username} Has Been Unmuted. :sound:`);
+                mutee.addRole(pesrole.id);
             } else {
                 console.log(`Tried Unmuting a user ${mutee.user.username}, but user was already unmuted!`);
             }
