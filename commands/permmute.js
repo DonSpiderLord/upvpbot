@@ -7,10 +7,12 @@ module.exports.run = async (bot, message, args) => {
     if(!mutee) return message.channel.send("Please supply a user to mute!");
 
     let muterole = message.guild.roles.find(r => r.name === "Muted");
+    let pesrole = message.guild.roles.find(r => r.name === "Peasant");
 
     mutee.addRole(muterole.id).then(() => {
       message.delete();
       message.channel.send(`${mutee.user.username} Has Been Permanently Muted! :mute:`);
+      mutee.removeRole(pesrole.id);
     })
 
     let PMembed = new Discord.RichEmbed()
