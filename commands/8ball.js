@@ -8,12 +8,13 @@ const Discord = require("discord.js")
     const replies = [
       "Yes",
       "No",
+      "Absolutely!",
       "I don't know!",
-      "Ask again later!",
-      "Leave me alone!",
+      "Ask again later! I'll tell you.",
+      "Leave me alone! I don't know!",
       "I am not sure",
-      "Pls no",
-      "You tell me.",
+      "Pls no questions",
+      "IDK, You tell me.",
       "Without a doubt",
       "Cannot predict now",
       "Without a doubt"
