@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
   setTimeout(() => {m.edit("**Setup In Progress**\n========================\n:white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :black_square_button:\nBinding Everything Together...\n========================")}, 36 * 1000);
   setTimeout(() => {m.edit("**Setup In Progress**\n========================\n:white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark:\nFinalizing Setup...\n========================")}, 40 * 1000);
 
-  setTimeout(() => {m.edit("**Setup Is Finished**\n=+=+=+=+=+=+=+=+=+\nU-PvP Discord Admin\nBot Version: v554\nDiscord JS Version: v11.5\n=+=+=+=+=+=+=+=+=+")}, 45 * 1000);
+  setTimeout(() => {m.edit("**Setup Is Finished**\n=+=+=+=+=+=+=+=+=+\nU-PvP Discord Admin\nBot Version: v569\nDiscord JS Version: v11.5\n=+=+=+=+=+=+=+=+=+")}, 45 * 1000);
 
   setTimeout(() => {
     let sEmbed = new Discord.RichEmbed()
