@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
       let rUser = args[0];
        if(!rUser) return message.channel.send("Please supply a user to report!");
       let reason = args[1];
-       if(!reason) server = "Not Defined";
+       if(!reason) reason = "Not Defined";
       let server = args[2];
        if(!server) server = "Not Defined";
 
