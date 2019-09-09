@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send(`${kickee.user.username} was successfully kicked.`)
 
         let Bembed = new Discord.RichEmbed()
-        .setColor("#0890d4")
+        .setColor("#181473")
         .setAuthor(`${message.guild.name} Modlogs`, message.guild.iconURL)
         .setThumbnail(bot.user.displayAvatarURL)
         .addField("Moderation:", "Kick")
