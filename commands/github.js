@@ -4,7 +4,7 @@ const prefix = botconfig.prefix
 
 module.exports.run = async (bot, message, args) => {
         let sEmbed = new Discord.RichEmbed()
-        .setColor("#e6aa07")
+        .setColor("#ffffff")
         .setTitle("GitHub Links")
         .setThumbnail(bot.user.displayAvatarURL)
         //.setAuthor(bot.user.username)
