@@ -26,9 +26,9 @@ module.exports.run = async (bot, message, args) => {
         });
 
     } else if(message.member.roles.find(r=>["SuggestionBan"].includes(r.name)) ){
-
       return message.channel.send("You have been banned from using this command!");
-
+    } else if(message.member.roles.find(r=>["SuggestionBan"].includes(r.name)) && message.member.roles.find(r=>["Peasant"].includes(r.name))) {
+      return message.channel.send("You have been banned from using this command!");
     }
 }
 
