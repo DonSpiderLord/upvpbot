@@ -12,7 +12,7 @@ module.exports = async (client, options) => {
 
   const warnBuffer = (options && options.warnBuffer) || 3; // Default Value: 3
   const maxBuffer = (options && options.maxBuffer) || 5; // Default Value: 5
-  const interval = (options && options.interval) || 1000; //Default Time: 2000MS (2 Seconds in Miliseconds)
+  const interval = (options && options.interval) || 2000; //Default Time: 2000MS (2 Seconds in Miliseconds)
   const warningMessage = (options && options.warningMessage) || "please stop spamming!"; // Default Message: "please stop spamming!" (@User please stop spamming!)
   const banMessage = (options && options.banMessage) || "has been hit by ban hammer for spamming!"; // Default Message: "has been hit by ban hammer for spamming!" (@User has been hit by ban hammer for spamming!)
   const maxDuplicatesWarning = (options && options.maxDuplicatesWarning || 7); // Default Value: 7
@@ -56,41 +56,45 @@ module.exports = async (client, options) => {
           m.channel.send(`${user.user.username} Has Been Muted For 3 Hours! :mute:`);
 
           let SpamFilterMuteLogEmbed = new Discord.RichEmbed()
-          .setColor("#0890d4")
-          .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
+          .setColor("#2450b5")
+          .setAuthor("U-PvP Network Modlogs")
+          .addField("Moderation:", "Mute", true)
+          .addField("Muted Person:", message.author.username, true)
           .setThumbnail(client.user.displayAvatarURL)
-          .addField("Moderation:", "Mute")
-          .addField("Muted Person:", user.user.username)
-          .addField("Moderator:", client.user.username)
-          .addField("Date:", m.createdAt.toLocaleString())
+          .addField("Reason:", "Spam Filter Mute", true)
+          .addField("Moderator:", client.user.username, true)
 
-          client.guilds.get('569546798725726236').channels.get('619567070329438229').send({embed: SpamFilterMuteLogEmbed});
+          client.guilds.get('569546798725726236').channels.get('591314683286257674').send({embed: SpamFilterMuteLogEmbed});
 
-          setTimeout(() => {user.removeRole(muterole);}, 3 * 3600000);
-          setTimeout(() => {m.channel.send(`${user.user.username} Has Been Unmuted! :sound:`)}, 3 * 3600000);
+          setTimeout(() => {
+                 if(user.member.roles.some(r=>["Muted"].includes(r.name)) ) {
+                    user.removeRole(muterole);
+                    m.channel.send(`${m.author.username} Has Been Unmuted. :sound:`);
+                 } else {
+                    console.log(`Tried Unmuting a user ${message.author.username}, but user was already unmuted!`);
+                 }}, 3 * 3600000);
     }
   }
-
 
    // Warn the User
    const warnUser = async (m, reply) => {
     warned.push(m.author.id);
 
     let SpamFilterWarnEmbed = new Discord.RichEmbed()
-    .setColor("#bf1711")
+    .setColor("#ffbb00")
     .setTitle(`${m.author.username} Has Been Warned For Spam!`);
     message.channel.send({embed: SpamFilterWarnEmbed});
 
     let SpamFilterWarnLogEmbed = new Discord.RichEmbed()
-    .setColor("#0890d4")
-    .setAuthor(`${m.guild.name} Modlogs`, m.guild.iconURL)
+    .setColor("#ffbb00")
+    .setAuthor("U-PvP Network Modlogs")
+    .addField("Moderation:", "Warn", true)
+    .addField("Warned Person:", message.author.username, true)
     .setThumbnail(client.user.displayAvatarURL)
-    .addField("Moderation:", "Warn")
-    .addField("Warned Person:", m.author.username)
-    .addField("Moderator:", client.user.username)
-    .addField("Date:", m.createdAt.toLocaleString())
+    .addField("Reason:", "Spam Filter Warn", true)
+    .addField("Moderator:", client.user.username, true)
 
-    client.guilds.get('569546798725726236').channels.get('619567070329438229').send({embed: SpamFilterWarnLogEmbed});
+    client.guilds.get('569546798725726236').channels.get('591314683286257674').send({embed: SpamFilterWarnLogEmbed});
 
    }
 
