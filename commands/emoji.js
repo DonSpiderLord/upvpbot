@@ -71,7 +71,7 @@ module.exports.run = async (bot, message, args) => {
 ]
 
   let index = Math.floor(Math.random() * (emojis.length)); // Math.random() returns a float from 0 - 1.
-  message.channel.send({emojis[index]);
+  message.channel.send(emojis[index]);
 }
 
 module.exports.config = {
