@@ -5,11 +5,13 @@ module.exports.run = async (bot, message, args) => {
       let mutee = message.mentions.members.first() || message.guild.members.get(args[0]);
       if(!mutee) return message.channel.send("Please supply a user to unmute!");
 
-      let muterole = message.guild.roles.find(r => r.name === "Muted")
+      let muterole = message.guild.roles.find(r => r.name === "Muted");
+      let pesrole = message.guild.roles.find(r => r.name === "Peasant");
 
       mutee.removeRole(muterole.id).then(() => {
         message.delete();
         message.channel.send(`${mutee.user.username} was successfully unmuted. :sound:`)
+        mutee.addRole(pesrole.id);
       })
 
       let UMembed = new Discord.RichEmbed()
