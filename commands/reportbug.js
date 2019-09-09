@@ -4,7 +4,7 @@ const botconfig = require("../botconfig.json");
 const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
-    if(message.member.roles.some(r=>["Owner"].includes(r.name)) ){
+    if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+", "Mod", "Trial-Mod", "Helper", "Peasant", "PvP God"].includes(r.name)) ){
       let author = message.author.username;
       for(i=0;i<=args.length;i++){
       bugReport = args.join(' ')
