@@ -69,8 +69,7 @@ module.exports.run = async (bot, message, args) => {
 ];
 
     let index = Math.floor(Math.random() * (deep_quotes.length)) // Math.random() returns a float from 0 - 1.
-    message.channel.send(`Special Delivery! Quote For ${message.author.username}:`, deep_quotes[index]);
-    message.delete();
+    message.channel.send(deep_quotes[index]);
 
 
 }
