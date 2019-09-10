@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const Bot = require("../bot.js");
 
 module.exports.run = async (bot, message, args) => {
-    if(message.member.roles.some(r=>["SuggestionBan"].includes(r.name)) ){
+    if(message.member.roles.some(r=>["SuggestBan"].includes(r.name)) ){
       return message.channel.send("You have been banned from using this command!");
     } else if(message.member.roles.some(r=>["Owner", "Co-Owner", "Manager", "Admin", "Mod+", "Mod", "Trial-Mod", "Helper", "Peasant", "PvP God"].includes(r.name)) && message.member.roles.find(r=>["Peasant"].includes(r.name))) {
       
