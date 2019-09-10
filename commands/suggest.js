@@ -1,7 +1,5 @@
 const Discord = require("discord.js");
 const Bot = require("../bot.js");
-const botconfig = require("../botconfig.json");
-const prefix = botconfig.prefix;
 
 module.exports.run = async (bot, message, args) => {
     if(message.member.roles.some(r=>["SuggestionBan"].includes(r.name)) ){
@@ -24,8 +22,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Suggested By:", author)
 
         bot.guilds.get('569546798725726236').channels.get('585062018286092299').send({embed: Sembed}).then(embedMessage => {
-          embedMessage.react('✅')
-		  .then(() => embedMessage.react('❌'))
+          embedMessage.react('✅').then(() => embedMessage.react('❌'))
         });
 
     }
@@ -37,5 +34,5 @@ module.exports.config = {
   usage: "u.suggest <suggestion>",
   description: "Sends suggestion to suggestion channel.",
   //noalias: "No Aliases",
-  accessableby: "Owner"
+  accessableby: "Everyone Exept SuggestionBan"
 }
