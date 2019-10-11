@@ -15,8 +15,8 @@ module.exports.run = async (bot, message, args) => {
   setTimeout(() => {m.edit("**Update In Progress**\n========================\n:white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark:\nFinalizing Update...\n========================")}, 40 * 1000);
 
   setTimeout(() => {m.edit("**Update Finished**\n=+=+=+=+=+=+=+=+=+\nU-PvP Discord Admin\nBot Version: v572\nDiscord JS Version: v11.5.1\n=+=+=+=+=+=+=+=+=+")}, 45 * 1000);
-
-)} else {
+  });
+} else {
     //if not right roles does nothing
   }
 }
