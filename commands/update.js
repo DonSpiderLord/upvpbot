@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
   setTimeout(() => {m.edit("**Update In Progress**\n========================\n:white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :black_square_button:\nPublishing Build To Heroku...\n========================")}, 36 * 1000);
   setTimeout(() => {m.edit("**Update In Progress**\n========================\n:white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark: :white_check_mark:\nFinalizing Update...\n========================")}, 40 * 1000);
 
-  setTimeout(() => {m.edit("**Update Finished**\n=+=+=+=+=+=+=+=+=+\nU-PvP Discord Admin\nBot Version: v602\nDiscord JS Version: v11.5.1\n=+=+=+=+=+=+=+=+=+")}, 45 * 1000);
+  setTimeout(() => {m.edit("**Update Finished**\n=+=+=+=+=+=+=+=+=+\nU-PvP Discord Admin\nBot Version: v595\nDiscord JS Version: v11.5.1\n=+=+=+=+=+=+=+=+=+")}, 45 * 1000);
   });
 } else {
     //if not right roles does nothing
