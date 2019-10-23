@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
   .setTitle("IP Adresses")
   .setThumbnail(bot.user.displayAvatarURL)
   //.setAuthor(bot.user.username)
-  .setDescription(`U-PvP Network Server\n**\nAvailable Servers:\n<=PvP Server=>\n**IP: play.u-pvp.com**\nPORT: 19132\n\n<=Creative Server=>\n**creative.u-pvp.com**\nPORT: 19132\n\n<=Hub=>\t**Coming Soon**\n<=SkyWars Server=>\t**Coming Soon**\n<=Factions Server=>\t**Coming Soon**`);
+  .setDescription(`Available Servers:\n\n<=PvP Server=>\n**IP: play.u-pvp.com**\nPORT: 19132\n\n<=Creative Server=>\n**creative.u-pvp.com**\nPORT: 19132\n\n<=Hub=>\t**Coming Soon**\n<=SkyWars Server=>\t**Coming Soon**\n<=Factions Server=>\t**Coming Soon**`);
   message.channel.send({embed: IPEmbed});
 
 
