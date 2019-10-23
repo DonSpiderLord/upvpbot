@@ -46,6 +46,7 @@ fs.readdir("./commands", (err, files) => {
 
 bot.on("message", async message =>{
      let muterole = message.guild.roles.find(r => r.name === "Muted");
+     const replies = ["Polly Is Currently Away, leave message after signal. -beep-", "Please stop tagging our dear Polly, he is very very very very busy.", "Trying to reach user PollyWantza in year 1914... -beep- -beep- -beep- No Signal :(", "Stop tagging our lord and creator Pollywantza", "Trying to locate Pollywantza... Still stuck in 1914.", "No time to chat with Polly! Let's go mining!", "Contacting Polly Wantza In 1914... Connection Error - Check Internet Connection" ]
 
      //Start Of Word Filter Regex Rows.
      var re1 = /\bahole\b/igm.test(message.content);
