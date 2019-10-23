@@ -9,15 +9,15 @@ const bot = new Discord.Client({disableEveryone: true});
 bot.on("ready", async () =>{
   antispam(bot, {
         warnBuffer: 3, // Maximum ammount of messages allowed to send in the interval time before getting warned.
-        maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned.
+        maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting muted.
         interval: 5000, // Amount of time in ms users can send the maxim amount of messages(maxBuffer) before getting muted.
-        warningMessage: "stop spamming! :oncoming_police_car:", // Message users receive when warned. (message starts with '@User, ' so you only need to input continue of it.)
-        banMessage: "has been banned for spamming!", // Message sent in chat when user is banned. (message starts with '@User, ' so you only need to input continue of it.)
+        warningMessage: "stop spamming! :oncoming_police_car:", // Inactive / Not Being Used.
+        banMessage: "has been banned for spamming!", // Inactive / Not Being Used.
         maxDuplicatesWarning: 3,// Maximum amount of duplicate messages a user can send in a timespan before getting warned.
-        maxDuplicatesBan: 5, // Maximum amount of duplicate messages a user can send in a timespan before getting banned.
-        deleteMessagesAfterBanForPastDays: 7, // Deletes the message history of the banned user in x days.
+        maxDuplicatesBan: 5, // Maximum amount of duplicate messages a user can send in a timespan before getting muted.
+        deleteMessagesAfterBanForPastDays: 7, // Inactive / Not Being Used
         exemptRoles: ["Owner", "Co-Owner", "Manager", "Build Manager", "Developer", "Admin","Mod+", "Mod", "Trial-Mod", "Helper", "Builder", "Trial Builder", "Staff"], // Name of roles (case sensitive) that are exempt from spam filter.
-        exemptUsers: [] // The Discord tags of the users (e.g: MrAugu#9016) (case sensitive) that are exempt from spam filter.
+        exemptUsers: [] //Discord Users That Are Immune To Filter. Inactive / Not Being Used.
       });
   console.log(`${bot.user.username} is online!`);
 })
