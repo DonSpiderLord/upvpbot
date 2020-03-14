@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
         .setTitle("GitHub Links")
         .setThumbnail(bot.user.displayAvatarURL)
         //.setAuthor(bot.user.username)
-        .setDescription(`Link to U-PvP Discord Admin Bot Github Repository:\n\nhttps://github.com/DonSpiderLord/upvpbot\n\n===========================\nBot Made By DonSpiderLord#2408 - Send Bugs And Suggestions`);
+        .setDescription(`Link to U-PvP Discord Admin Bot Github Repository:\n\nhttps://github.com/EEHoveckis/upvpbot\n\n===========================\nBot Made By EEHoveckis#2408 - Send Bugs And Suggestions`);
         message.channel.send({embed: sEmbed});
     }
 
