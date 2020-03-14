@@ -1,5 +1,5 @@
 //Script Made By Michael J. Scofield, Thank You!
-//Script Modified By DonSpiderLord To Fit Needs.
+//Script Modified By EEHoveckis To Fit Needs.
 const Discord = require("discord.js");
 
 var authors = [];
