@@ -2,8 +2,6 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const prefix = botconfig.prefix;
 const antispam = require("./anti_spam.js");
-const untag = require("./untag.json");
-var untaggable = untag.untaggable;
 const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () =>{
@@ -46,8 +44,7 @@ fs.readdir("./commands", (err, files) => {
 
 bot.on("message", async message =>{
      let muterole = message.guild.roles.find(r => r.name === "Muted");
-     const replies = ["Polly Is Currently Away, leave message after signal. -beep-", "Please stop tagging our dear Polly, he is very very very very busy.", "Trying to reach user PollyWantza in year 1914... -beep- -beep- -beep- No Signal :(", "Stop tagging our lord and creator Pollywantza", "Trying to locate Pollywantza... Still stuck in 1914.", "No time to chat with Polly! Let's go mining!", "Contacting Polly Wantza In 1914... Connection Error - Check Internet Connection" ]
-
+  
      //Start Of Word Filter Regex Rows.
      var re1 = /\bahole\b/igm.test(message.content);
      var re2 = /\banus\b/igm.test(message.content);
@@ -158,13 +155,6 @@ bot.on("message", async message =>{
                 console.log(`Tried Unmuting a user ${message.author.username}, but user was already unmuted!`);
              }}, 3 * 3600000);
      }
-
-     for (y = 0; y < untaggable.length; y++) {
-            if (message.content.includes(untaggable[y])){
-              let index = Math.floor(Math.random() * (replies.length));
-              message.channel.send(replies[index]);
-            }
-    }
     if (dis5 == true || dis6 == true || dis7 == true || dis16 == true){
          if(message.member.roles.some(r=>["Peasant", "PvP God", "YouTuber"].includes(r.name)) ) {     
               message.delete();
